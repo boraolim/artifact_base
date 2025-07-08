@@ -1,0 +1,46 @@
+﻿global using System;
+global using System.IO;
+global using System.Net;
+global using System.Text;
+global using System.Linq;
+global using System.Text.Json;
+global using System.Threading;
+global using System.Reflection;
+global using System.Globalization;
+global using System.ComponentModel;
+global using System.Threading.Tasks;
+global using System.Linq.Expressions;
+global using System.Collections.Generic;
+global using System.Security.Cryptography;
+global using System.Text.RegularExpressions;
+
+global using Moq;
+global using Xunit;
+global using Xunit.Sdk;
+global using FluentValidation;
+global using FluentValidation.Results;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.Net.Http.Headers;
+global using Microsoft.Extensions.Options;
+global using Microsoft.Extensions.Primitives;
+global using Microsoft.AspNetCore.WebUtilities;
+
+global using Hogar.Core.Shared.Utils;
+global using Hogar.Core.Shared.Settings;
+global using Hogar.Core.Shared.Services;
+global using Hogar.Core.Shared.Wrappers;
+global using Hogar.Core.Shared.Dictionary;
+global using Hogar.Core.Shared.Converters;
+global using Hogar.Core.Shared.Extensions;
+global using Hogar.Core.Shared.Exceptions;
+global using Hogar.Core.Shared.Tests.Enums;
+global using Hogar.Core.Shared.Tests.Models;
+global using Hogar.Core.Shared.Tests.Records;
+global using Hogar.Core.Shared.Tests.Helpers;
+global using Hogar.Core.Shared.Tests.Handlers;
+global using Hogar.Core.Shared.Tests.Constants;
+global using Hogar.Core.Shared.Tests.Exceptions;
+
+global using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
+global using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+global using HttpStatusCodeConstantsCore = Hogar.Core.Shared.Constants.HttpStatusCodeConstants;

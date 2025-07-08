@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+        <LangVersion>9.0</LangVersion>
+        <IsTestProject>true</IsTestProject>
+        <TargetFramework>net5.0</TargetFramework>
+        <RepositoryUrl>http://172.16.230.140/obonilla/artifact-bankaool.git</RepositoryUrl>
+        <NoWarn>$(NoWarn);1701;1702;NU1701;1571;1723;1710;1573;1572;0414;0169;1591;0219;8002;AD0001;8618;8765;8604;8625;8601;8600;8062;8619;8602;8603;8604;0618;8632;NU1900;xUnit1026</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+        <PackageReference Include="xunit" Version="2.9.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Moq" Version="4.20.72" />
+        <PackageReference Include="Shouldly" Version="4.2.1" />
+        <PackageReference Include="coverlet.collector" Version="6.0.2">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Bankaool.Core.Shared\Bankaool.Core.Shared.csproj" />
+    </ItemGroup>
+</Project>

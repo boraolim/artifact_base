@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>Hogar.Core.Shared</AssemblyName>
+        <RootNamespace>Hogar.Core.Shared</RootNamespace>
+        <ServerGarbageCollection>true</ServerGarbageCollection>
+        <CheckEolTargetFramework>false</CheckEolTargetFramework>
+        <NoWarn>$(NoWarn);1701;1702;NU1701;1571;1723;1710;1573;1572;0414;0169;1591;0219;8002;AD0001;8618;8765;8604;8625;8601;8600;8062;8619;8602;8603;8604;0618;8634
+        </NoWarn>
+
+        <!-- Assembly information. -->
+        <Version>1.0.0.0</Version>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion>1.0.0.0</FileVersion>
+        <Company>Hogar S.A. de C.V.</Company>
+        <Authors>Sistemas TI</Authors>
+        <Product>Hogar.Core.Shared.dll</Product>
+        <Description>Proyecto para funciones de uso común y compartido.</Description>
+        <Copyright>© Hogar S.A. de C.V. 2021-2025. All rights reserved.</Copyright>
+        <PackageReleaseNotes>Version: 1.0.0.0. Date: 2024/11/15.</PackageReleaseNotes>
+        <PackageTags>Hogar, Hogar.Core.Shared.dll</PackageTags>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	    <RepositoryUrl>http://github.com/boraolim/artifact_base.git</RepositoryUrl>
+
+        <!-- Other additional settings. -->
+        <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+        <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+        <GenerateAssemblyCompanyAttribute>true</GenerateAssemblyCompanyAttribute>
+        <GenerateAssemblyProductAttribute>true</GenerateAssemblyProductAttribute>
+        <GenerateAssemblyVersionAttribute>true</GenerateAssemblyVersionAttribute>
+        <GenerateAssemblyCopyrightAttribute>true</GenerateAssemblyCopyrightAttribute>
+        <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
+        <GenerateAssemblyConfigurationAttribute>true</GenerateAssemblyConfigurationAttribute>
+    </PropertyGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="FluentValidation" Version="12.0.0" />
+    </ItemGroup>
+</Project>

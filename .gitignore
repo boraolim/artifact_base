@@ -1,0 +1,362 @@
+# - 22-02-2024 BM
+
+# The following command works for downloading when using Git for Windows:
+# curl -LOf http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
+#
+# Download this file using PowerShell v3 under Windows with the following comand:
+# Invoke-WebRequest https://gist.githubusercontent.com/kmorcinek/2710267/raw/ -OutFile .gitignore
+#
+# or wget:
+# wget --no-check-certificate http://gist.githubusercontent.com/kmorcinek/2710267/raw/.gitignore
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+*.pubxml.user
+*.nuget.g.props
+*.nuget.cache
+*.cache
+*.vsidx
+
+# APIBancaMovil
+Banca Movil/APIBancaMovil/bin/*
+Banca Movil/APIBancaMovil/obj/Debug/*
+Banca Movil/APIBancaMovil/obj/Release/*
+Banca Movil/APIBancaMovil/wwwroot/lib/*
+Banca Movil/APIBancaMovil/Properties/*
+Banca Movil/APIBancaMovil/Properties/PublishProfiles/FolderProfile1.pubxml.user
+Banca Movil/APIBancaMovil/Properties/PublishProfiles/FolderProfile.pubxml.user
+Banca Movil/APIBancaMovil/Properties/PublishProfiles/*.pubxml.user
+Banca Movil/APIBancaMovil/Properties/PublishProfiles/*.user
+Banca Movil/APIBancaMovil/Properties/PublishProfiles/*.*
+
+
+# APIBancaMovilLink
+Banca Movil/APIBancaMovilLink/bin/*
+Banca Movil/APIBancaMovilLink/obj/Debug/*
+Banca Movil/APIBancaMovilLink/obj/Release/*
+Banca Movil/APIBancaMovilLink/Properties/*
+Banca Movil/APIBancaMovilLink/Properties/PublishProfiles/*
+Banca Movil/APIBancaMovilLink/Properties/PublishProfiles/*.user
+Banca Movil/APIBancaMovilLink/Properties/PublishProfiles/*.pubxml.user
+Banca Movil/APIBancaMovilLink/obj/project.nuget.cache
+
+
+# APIBancaMovilHook
+Banca Movil/APIBancaMovilHook/bin/*
+Banca Movil/APIBancaMovilHook/obj/Debug/*
+Banca Movil/APIBancaMovilHook/obj/Release/*
+Banca Movil/APIBancaMovilHook/Properties/*
+Banca Movil/APIBancaMovilHook/Properties/PublishProfiles/*
+Banca Movil/APIBancaMovilHook/Properties/PublishProfiles/*.user
+Banca Movil/APIBancaMovilHook/Properties/PublishProfiles/*.pubxml.user
+Banca Movil/APIBancaMovilHook/obj/project.nuget.cache
+
+# APIDevToolKit
+Banca Movil/DevToolKit/bin/*
+Banca Movil/DevToolKit/obj/Debug/*
+Banca Movil/DevToolKit/obj/Release/*
+Banca Movil/DevToolKit/Properties/*
+Banca Movil/DevToolKit/Properties/PublishProfiles/*
+Banca Movil/DevToolKit/Properties/PublishProfiles/*.user
+Banca Movil/DevToolKit/Properties/PublishProfiles/*.pubxml.user
+Banca Movil/DevToolKit/obj/project.nuget.cache
+
+
+# BusinessRules
+Banca Movil/BusinessRules/bin/*
+Banca Movil/BusinessRules/obj/Debug/*
+Banca Movil/BusinessRules/obj/Release/*
+
+# DataAccess
+Banca Movil/DataAccess/bin/*
+Banca Movil/DataAccess/obj/Debug/*
+Banca Movil/DataAccess/obj/Release/*
+
+# EntityModel
+Banca Movil/EntityModel/bin/*
+Banca Movil/EntityModel/obj/Debug/*
+Banca Movil/EntityModel/obj/Release/*
+
+# FrameworkAPI
+Banca Movil/FrameworkAPI/bin/*
+Banca Movil/FrameworkAPI/obj/Debug/*
+Banca Movil/FrameworkAPI/obj/Release/*
+
+#vs
+Banca Movil/.vs/Banca Movil/config/applicationhost.config
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Uu]pload/
+[Uu]ploads/
+.[Ss]onarqube/
+[Cc]overagereport/
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+# Uncomment if you have tasks that create the project's static files in wwwroot
+#wwwroot/
+
+# Visual Studio 2017 auto generated files
+Generated\ Files/
+
+# NuGet Packages
+*.nupkg
+# NuGet Symbol Packages
+*.snupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/[Pp]ackages/repositories.config
+# NuGet v3's project.json files produces more ignorable files
+*.nuget.props
+*.nuget.targets
+
+# Nuget personal access tokens and Credentials
+# nuget.config
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Benchmark Results
+BenchmarkDotNet.Artifacts/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.scc
+*.suo
+*.v2
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+
+# Guidance Automation Toolkit
+*.gpState
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# TeamCity is a build add-in
+_TeamCity*
+
+# DotCover is a Code Coverage Tool
+*.dotCover
+
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject is a documentation generator add-in
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.Publish.xml
+
+# Windows Azure Build Output
+csx
+*.build.csdef
+
+# Windows Store app package directory
+AppPackages/
+
+# Others
+*.[Cc]ache
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.[Pp]ublish.xml
+*.pfx
+*.publishsettings
+modulesbin/
+tempbin/
+
+# EPiServer Site file (VPP)
+AppData/
+
+# RIA/Silverlight projects
+Generated_Code/
+
+# Backup & report files from converting an old project file to a newer
+# Visual Studio version. Backup files are not needed, because we have git ;-)
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+# vim
+*.txt~
+*.swp
+*.swo
+
+# Temp files when opening LibreOffice on ubuntu
+.~lock.*
+ 
+# svn
+.svn
+
+# CVS - Source Control
+**/CVS/
+
+# Remainings from resolving conflicts in Source Control
+*.orig
+
+# SQL Server files
+**/App_Data/*.mdf
+**/App_Data/*.ldf
+**/App_Data/*.sdf
+
+
+#LightSwitch generated files
+GeneratedArtifacts/
+_Pvt_Extensions/
+ModelManifest.xml
+
+# =========================
+# Windows detritus
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# OS generated files #
+Icon?
+
+# Mac desktop service store files
+.DS_Store
+
+# SASS Compiler cache
+.sass-cache
+
+# Visual Studio 2014 CTP
+**/*.sln.ide
+
+# Visual Studio temp something
+.vs/
+
+# dotnet stuff
+project.lock.json
+
+# VS 2015+
+*.vc.vc.opendb
+*.vc.db
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Output folder used by Webpack or other FE stuff
+**/node_modules/*
+**/wwwroot/*
+
+# SpecFlow specific
+*.feature.cs
+*.feature.xlsx.*
+*.Specs_*.html
+
+# UWP Projects
+AppPackages/
+
+#####
+# End of core ignore list, below put you custom 'per project' settings (patterns or path)
+#####
+
+.vs/PlataformaPlus_V5x
+/Banca Movil/.sonarqube
