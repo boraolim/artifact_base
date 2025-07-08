@@ -3,7 +3,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <AssemblyName>Hogar.Core.Shared</AssemblyName>
+        <AssemblyName>Hogar.Core.Shared80</AssemblyName>
         <RootNamespace>Hogar.Core.Shared</RootNamespace>
         <ServerGarbageCollection>true</ServerGarbageCollection>
         <CheckEolTargetFramework>false</CheckEolTargetFramework>
