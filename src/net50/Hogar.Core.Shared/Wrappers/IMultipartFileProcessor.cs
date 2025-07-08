@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
 
-using Bankaool.Core.Shared.Services;
+using Hogar.Core.Shared.Services;
 
-namespace Bankaool.Core.Shared.Wrappers
+namespace Hogar.Core.Shared.Wrappers
 {
     public interface IMultipartFileProcessor
     {

@@ -12,13 +12,13 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using Microsoft.AspNetCore.WebUtilities;
 
-using Bankaool.Core.Shared.Settings;
-using Bankaool.Core.Shared.Wrappers;
-using Bankaool.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Settings;
+using Hogar.Core.Shared.Wrappers;
+using Hogar.Core.Shared.Exceptions;
 
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class MultipartFileProcessorTests
     {

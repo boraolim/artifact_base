@@ -1,9 +1,9 @@
 ﻿using System;
 
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
-using EnvironmentConstantsCore = Bankaool.Core.Shared.Constants.EnvironmentConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using EnvironmentConstantsCore = Hogar.Core.Shared.Constants.EnvironmentConstants;
 
-namespace Bankaool.Core.Shared.Services
+namespace Hogar.Core.Shared.Services
 {
     public sealed class EnvironmentReader : IEnvironmentReader
     {

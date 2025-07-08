@@ -2,12 +2,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-using Bankaool.Core.Shared.Services;
-using Bankaool.Core.Shared.Wrappers;
-using Bankaool.Core.Shared.Tests.Records;
+using Hogar.Core.Shared.Services;
+using Hogar.Core.Shared.Wrappers;
+using Hogar.Core.Shared.Tests.Records;
 
 
-namespace Bankaool.Core.Shared.Tests.Handlers
+namespace Hogar.Core.Shared.Tests.Handlers
 {
     public sealed class JsonToChainHandler : ICommandHandler<JsonToChainRequest, Result<CommonResponse>>
     {

@@ -9,14 +9,14 @@ using System.Collections.Concurrent;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
-using Bankaool.Core.Shared.Extensions;
+using Hogar.Core.Shared.Extensions;
 
-using MainConstantsCore = Bankaool.Core.Shared.Constants.MainConstants;
-using RegexConstantsCore = Bankaool.Core.Shared.Constants.RegexConstants;
-using FormatConstantsCore = Bankaool.Core.Shared.Constants.FormatConstants;
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
+using RegexConstantsCore = Hogar.Core.Shared.Constants.RegexConstants;
+using FormatConstantsCore = Hogar.Core.Shared.Constants.FormatConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Utils
+namespace Hogar.Core.Shared.Utils
 {
     public static class Functions
     {

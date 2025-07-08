@@ -1,4 +1,4 @@
-﻿namespace Bankaool.Core.Shared.Services
+﻿namespace Hogar.Core.Shared.Services
 {
     public interface ICypherAes
     {

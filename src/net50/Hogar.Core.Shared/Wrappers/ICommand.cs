@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using Bankaool.Core.Shared.Services;
+using Hogar.Core.Shared.Services;
 
-namespace Bankaool.Core.Shared.Wrappers
+namespace Hogar.Core.Shared.Wrappers
 {
     #region "Core"
 

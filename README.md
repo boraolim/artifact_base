@@ -15,8 +15,8 @@ $ git add "xxx"
 $ git commit -m "Comment"
 $ dotnet sonarscanner begin -k:"Bankaool_Artifacts" -d:sonar.host.url="http://localhost:9000" -d:sonar.token="TOKEN" -d:sonar.coverageReportPaths="TestResults/sonarqubecoverage/SonarQube.xml"
 $ dotnet clean && dotnet restore --force
-$ dotnet build Bankaool.Core.Shared/Bankaool.Core.Shared.csproj & dotnet build Bankaool.Core.Shared.Tests/Bankaool.Core.Shared.Tests.csproj
-$ dotnet test Bankaool.Core.Shared.Tests/Bankaool.Core.Shared.Tests.csproj --collect:"XPlat Code Coverage" --results-directory "TestResults"
+$ dotnet build Hogar.Core.Shared/Hogar.Core.Shared.csproj & dotnet build Hogar.Core.Shared.Tests/Hogar.Core.Shared.Tests.csproj
+$ dotnet test Hogar.Core.Shared.Tests/Hogar.Core.Shared.Tests.csproj --collect:"XPlat Code Coverage" --results-directory "TestResults"
 $ reportgenerator "-reports:TestResults/**/coverage.cobertura.xml" "-targetdir:TestResults/reports" -reporttypes:Html
 $ reportgenerator "-reports:TestResults/**/coverage.cobertura.xml" "-targetdir:TestResults/sonarqubecoverage" -reporttypes:SonarQube
 $ dotnet sonarscanner end -d:sonar.token="TOKEN"

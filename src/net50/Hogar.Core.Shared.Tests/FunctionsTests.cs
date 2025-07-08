@@ -9,11 +9,11 @@ using System.Text.RegularExpressions;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Utils;
-using Bankaool.Core.Shared.Tests.Constants;
-using Bankaool.Core.Shared.Tests.Enums;
+using Hogar.Core.Shared.Utils;
+using Hogar.Core.Shared.Tests.Constants;
+using Hogar.Core.Shared.Tests.Enums;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class FunctionsTests
     {

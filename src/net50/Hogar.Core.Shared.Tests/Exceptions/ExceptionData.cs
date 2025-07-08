@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Bankaool.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Exceptions;
 using Xunit;
 
-namespace Bankaool.Core.Shared.Tests.Exceptions
+namespace Hogar.Core.Shared.Tests.Exceptions
 {
     public static class ExceptionData
     {

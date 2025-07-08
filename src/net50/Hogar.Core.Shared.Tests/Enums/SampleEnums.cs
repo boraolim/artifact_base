@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Bankaool.Core.Shared.Tests.Enums
+namespace Hogar.Core.Shared.Tests.Enums
 {
     public enum SampleValues
     {

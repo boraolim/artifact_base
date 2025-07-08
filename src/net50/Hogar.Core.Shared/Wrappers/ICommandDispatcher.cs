@@ -7,13 +7,13 @@ using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-using Bankaool.Core.Shared.Services;
-using Bankaool.Core.Shared.Extensions;
-using Bankaool.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Services;
+using Hogar.Core.Shared.Extensions;
+using Hogar.Core.Shared.Exceptions;
 
-using MainConstantsCore = Bankaool.Core.Shared.Constants.MainConstants;
+using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
 
-namespace Bankaool.Core.Shared.Wrappers
+namespace Hogar.Core.Shared.Wrappers
 {
     public interface ICommandDispatcher
     {

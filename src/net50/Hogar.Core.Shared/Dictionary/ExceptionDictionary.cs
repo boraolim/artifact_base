@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Bankaool.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Exceptions;
 
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
-using HttpStatusCodeConstantsCore = Bankaool.Core.Shared.Constants.HttpStatusCodeConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using HttpStatusCodeConstantsCore = Hogar.Core.Shared.Constants.HttpStatusCodeConstants;
 
-namespace Bankaool.Core.Shared.Dictionary
+namespace Hogar.Core.Shared.Dictionary
 {
     public static class ExceptionDictionary
     {

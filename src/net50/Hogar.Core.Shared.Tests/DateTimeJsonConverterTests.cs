@@ -3,10 +3,10 @@ using System.Text.Json;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Converters;
-using Bankaool.Core.Shared.Tests.Constants;
+using Hogar.Core.Shared.Converters;
+using Hogar.Core.Shared.Tests.Constants;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class DateTimeJsonConverterTests
     {

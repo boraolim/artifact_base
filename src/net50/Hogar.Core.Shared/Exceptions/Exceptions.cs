@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 using FluentValidation.Results;
 
-using Bankaool.Core.Shared.Extensions;
+using Hogar.Core.Shared.Extensions;
 
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Exceptions
+namespace Hogar.Core.Shared.Exceptions
 {
     public class CustomException : Exception
     {

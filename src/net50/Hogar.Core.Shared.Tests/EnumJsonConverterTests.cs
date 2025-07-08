@@ -3,9 +3,9 @@ using System.Text.Json;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Converters;
+using Hogar.Core.Shared.Converters;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class EnumJsonConverterTests
     {

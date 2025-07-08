@@ -2,9 +2,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Converters
+namespace Hogar.Core.Shared.Converters
 {
     public class EnumJsonConverter<T> : JsonConverter<T> where T : struct, System.Enum
     {

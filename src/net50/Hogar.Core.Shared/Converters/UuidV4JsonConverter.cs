@@ -3,13 +3,13 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
-using Bankaool.Core.Shared.Utils;
+using Hogar.Core.Shared.Utils;
 
-using MainConstantsCore = Bankaool.Core.Shared.Constants.MainConstants;
-using RegexConstantsCore = Bankaool.Core.Shared.Constants.RegexConstants;
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
+using RegexConstantsCore = Hogar.Core.Shared.Constants.RegexConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Converters
+namespace Hogar.Core.Shared.Converters
 {
     public class UuidV4JsonConverter : JsonConverter<Guid>
     {

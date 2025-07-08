@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Services;
-using Bankaool.Core.Shared.Wrappers;
-using Bankaool.Core.Shared.Tests.Records;
+using Hogar.Core.Shared.Services;
+using Hogar.Core.Shared.Wrappers;
+using Hogar.Core.Shared.Tests.Records;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class CommandTests
     {

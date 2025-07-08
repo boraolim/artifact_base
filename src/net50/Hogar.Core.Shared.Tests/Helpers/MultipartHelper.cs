@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Bankaool.Core.Shared.Exceptions;
-using Bankaool.Core.Shared.Tests.Constants;
-using Bankaool.Core.Shared.Wrappers;
+using Hogar.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Tests.Constants;
+using Hogar.Core.Shared.Wrappers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 
-using MainConstantsCore = Bankaool.Core.Shared.Constants.MainConstants;
+using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
 
-namespace Bankaool.Core.Shared.Tests.Helpers
+namespace Hogar.Core.Shared.Tests.Helpers
 {
     public static class MultipartHelper
     {

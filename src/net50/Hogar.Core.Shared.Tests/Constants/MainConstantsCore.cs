@@ -1,4 +1,4 @@
-﻿namespace Bankaool.Core.Shared.Tests.Constants
+﻿namespace Hogar.Core.Shared.Tests.Constants
 {
     public static class MainConstantsCore
     {

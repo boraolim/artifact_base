@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Dictionary;
-using Bankaool.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Dictionary;
+using Hogar.Core.Shared.Exceptions;
 
-using HttpStatusCodeConstantsCore = Bankaool.Core.Shared.Constants.HttpStatusCodeConstants;
+using HttpStatusCodeConstantsCore = Hogar.Core.Shared.Constants.HttpStatusCodeConstants;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class ExceptionDictionaryTests
     {

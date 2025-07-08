@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using Xunit;
 using FluentValidation.Results;
 
-using Bankaool.Core.Shared.Exceptions;
-using Bankaool.Core.Shared.Tests.Exceptions;
+using Hogar.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Tests.Exceptions;
 
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class CustomExceptionsTests
     {

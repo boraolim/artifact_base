@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bankaool.Core.Shared.Services
+namespace Hogar.Core.Shared.Services
 {
     public interface IResult<T>
     {

@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using Moq;
 using Xunit;
 
-using Bankaool.Core.Shared.Services;
+using Hogar.Core.Shared.Services;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class EnvironmentReaderTests
     {

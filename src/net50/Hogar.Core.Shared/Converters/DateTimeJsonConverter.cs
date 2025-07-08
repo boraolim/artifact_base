@@ -3,9 +3,9 @@ using System.Text.Json;
 using System.Globalization;
 using System.Text.Json.Serialization;
 
-using FormatConstantsCore = Bankaool.Core.Shared.Constants.FormatConstants;
+using FormatConstantsCore = Hogar.Core.Shared.Constants.FormatConstants;
 
-namespace Bankaool.Core.Shared.Converters
+namespace Hogar.Core.Shared.Converters
 {
     public class DateTimeJsonConverter : JsonConverter<DateTime>
     {

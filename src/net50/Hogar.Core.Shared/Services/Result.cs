@@ -2,10 +2,10 @@
 using System.Net;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Bankaool.Core.Shared.Converters;
+using Hogar.Core.Shared.Converters;
 using System.Text.Json.Serialization;
 
-namespace Bankaool.Core.Shared.Services
+namespace Hogar.Core.Shared.Services
 {
     public class Result<T> : IResult<T>
     {

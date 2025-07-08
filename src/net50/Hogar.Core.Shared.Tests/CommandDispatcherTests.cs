@@ -8,16 +8,16 @@ using Xunit;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 
-using Bankaool.Core.Shared.Services;
-using Bankaool.Core.Shared.Wrappers;
-using Bankaool.Core.Shared.Exceptions;
-using Bankaool.Core.Shared.Tests.Records;
-using Bankaool.Core.Shared.Tests.Handlers;
+using Hogar.Core.Shared.Services;
+using Hogar.Core.Shared.Wrappers;
+using Hogar.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Tests.Records;
+using Hogar.Core.Shared.Tests.Handlers;
 
-using MainConstantsCore = Bankaool.Core.Shared.Constants.MainConstants;
+using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
 
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class CommandDispatcherTests
     {

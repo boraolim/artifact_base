@@ -8,16 +8,16 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.WebUtilities;
 
-using Bankaool.Core.Shared.Services;
-using Bankaool.Core.Shared.Settings;
-using Bankaool.Core.Shared.Exceptions;
-using Bankaool.Core.Shared.Extensions;
+using Hogar.Core.Shared.Services;
+using Hogar.Core.Shared.Settings;
+using Hogar.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Extensions;
 
-using MainConstantsCore = Bankaool.Core.Shared.Constants.MainConstants;
-using FormatConstantsCore = Bankaool.Core.Shared.Constants.FormatConstants;
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
+using FormatConstantsCore = Hogar.Core.Shared.Constants.FormatConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Wrappers
+namespace Hogar.Core.Shared.Wrappers
 {
     public class MultipartFileProcessor : IMultipartFileProcessor
     {

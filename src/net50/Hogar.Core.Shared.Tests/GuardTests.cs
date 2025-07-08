@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Extensions;
+using Hogar.Core.Shared.Extensions;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class GuardTests
     {

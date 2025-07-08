@@ -1,4 +1,4 @@
-﻿namespace Bankaool.Core.Shared.Settings
+﻿namespace Hogar.Core.Shared.Settings
 {
     public class UploadSettings
     {

@@ -1,6 +1,6 @@
 ﻿using System.Reflection.Metadata;
 
-namespace Bankaool.Core.Shared.Constants
+namespace Hogar.Core.Shared.Constants
 {
     public static class MainConstants
     {

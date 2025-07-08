@@ -3,12 +3,12 @@ using System.Security.Cryptography;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Services;
-using Bankaool.Core.Shared.Tests.Constants;
+using Hogar.Core.Shared.Services;
+using Hogar.Core.Shared.Tests.Constants;
 
-using MessageConstantsCore = Bankaool.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class CypherAesTests
     {

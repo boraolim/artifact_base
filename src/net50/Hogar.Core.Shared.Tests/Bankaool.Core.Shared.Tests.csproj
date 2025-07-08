@@ -22,6 +22,6 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Bankaool.Core.Shared\Bankaool.Core.Shared.csproj" />
+        <ProjectReference Include="..\Hogar.Core.Shared\Hogar.Core.Shared.csproj" />
     </ItemGroup>
 </Project>

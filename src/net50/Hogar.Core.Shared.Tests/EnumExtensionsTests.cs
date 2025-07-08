@@ -3,10 +3,10 @@ using System.ComponentModel;
 
 using Xunit;
 
-using Bankaool.Core.Shared.Extensions;
-using Bankaool.Core.Shared.Tests.Enums;
+using Hogar.Core.Shared.Extensions;
+using Hogar.Core.Shared.Tests.Enums;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class EnumExtensionsTests
     {

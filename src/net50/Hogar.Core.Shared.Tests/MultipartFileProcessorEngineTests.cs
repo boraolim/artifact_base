@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Bankaool.Core.Shared.Exceptions;
-using Bankaool.Core.Shared.Settings;
-using Bankaool.Core.Shared.Tests.Helpers;
-using Bankaool.Core.Shared.Tests.Models;
-using Bankaool.Core.Shared.Wrappers;
+using Hogar.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Settings;
+using Hogar.Core.Shared.Tests.Helpers;
+using Hogar.Core.Shared.Tests.Models;
+using Hogar.Core.Shared.Wrappers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Xunit;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class MultipartFileProcessorEngineTests
     {

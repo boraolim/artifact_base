@@ -7,10 +7,10 @@ using System.Collections.Generic;
 using Xunit;
 using Xunit.Sdk;
 
-using Bankaool.Core.Shared.Extensions;
-using Bankaool.Core.Shared.Tests.Models;
+using Hogar.Core.Shared.Extensions;
+using Hogar.Core.Shared.Tests.Models;
 
-namespace Bankaool.Core.Shared.Tests
+namespace Hogar.Core.Shared.Tests
 {
     public class MapperTests
     {
