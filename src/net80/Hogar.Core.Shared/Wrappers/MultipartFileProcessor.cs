@@ -9,57 +9,78 @@ public class MultipartFileProcessor : IMultipartFileProcessor
     public async Task<Result<ResultUploadRespose>> ProcessAsync<TResult>(HttpRequest request,
                                                                          Func<string, Stream, Task<TResult>> processor)
     {
-        ValidateRequestHeaders(request);
-
-        var boundary = ExtractBoundary(request.ContentType);
-        var reader = new MultipartReader(boundary, request.Body);
-
-        var uploadedFiles = new List<SuccessFileResponse>();
-        var notUploadedFiles = new List<NotSuccessFileResponse>();
-
-        int fileCount = 0;
-        long totalUploadSize = 0;
-
-        MultipartSection section;
-        while((section = await reader.ReadNextSectionAsync()) is not null)
+        try
         {
-            if(IsValidFileSection(section, out _, out var fileName))
+            ValidateRequestHeaders(request);
+
+            var boundary = ExtractBoundary(request.ContentType);
+
+            if(request.Body.CanSeek)
+                request.Body.Position = 0;
+
+            var reader = new MultipartReader(boundary, request.Body)
             {
-                if(++fileCount > _settings.MaxFileCount)
+                HeadersLengthLimit = 1024
+            };
+
+            var uploadedFiles = new List<SuccessFileResponse>();
+            var notUploadedFiles = new List<NotSuccessFileResponse>();
+
+            int fileCount = 0; long totalUploadSize = 0; MultipartSection section;
+            while((section = await reader.ReadNextSectionAsync()) is not null)
+            {
+                if(IsValidFileSection(section, out _, out var fileName))
                 {
-                    throw new BadRequestException(
-                        string.Format(FormatConstantsCore.FMT_MAX_FILE_COUNT_EXCEEDED, _settings.MaxFileCount));
-                }
+                    fileCount++;
 
-                var memoryStream = await CopyToMemoryStreamAsync(section.Body);
-                var fileSize = memoryStream.Length;
-
-                if(IsFileSizeValid(fileSize, totalUploadSize, fileName, notUploadedFiles))
-                {
-                    var result = await processor(fileName, memoryStream);
-                    bool isSuccess = result.MapTo<Result<SuccessFileResponse>>().Succeded;
-
-                    if(isSuccess)
+                    if(fileCount > _settings.MaxFileCount)
                     {
-                        uploadedFiles.Add(new SuccessFileResponse(fileName, fileSize));
-                        totalUploadSize += fileSize;
+                        throw new BadRequestException(
+                            string.Format(FormatConstantsCore.FMT_MAX_FILE_COUNT_EXCEEDED, _settings.MaxFileCount));
                     }
-                    else
+
+                    var memoryStream = await CopyToMemoryStreamAsync(section.Body);
+                    var fileSize = memoryStream.Length;
+
+                    if(IsFileSizeValid(fileSize, totalUploadSize, fileName, notUploadedFiles))
                     {
-                        notUploadedFiles.Add(new NotSuccessFileResponse(fileName));
+                        var result = await processor(fileName, memoryStream);
+                        bool isSuccess = result.MapTo<Result<SuccessFileResponse>>().Succeded;
+
+                        if(isSuccess)
+                        {
+                            uploadedFiles.Add(new SuccessFileResponse(fileName, fileSize));
+                            totalUploadSize += fileSize;
+                        }
+                        else
+                        {
+                            notUploadedFiles.Add(new NotSuccessFileResponse(fileName));
+                        }
                     }
                 }
             }
+
+            if(fileCount == 0)
+                throw new BadRequestException(MessageConstantsCore.MSG_REQUEST_MULTIPART_EMPTY);
+
+            var response = new ResultUploadRespose(
+                new DetailSuccessFileListResponse(uploadedFiles, uploadedFiles.Count, totalUploadSize),
+                notUploadedFiles);
+
+            return await Result<ResultUploadRespose>.SuccessAsync(response);
         }
-
-        if(fileCount == 0)
-            throw new BadRequestException(MessageConstantsCore.MSG_REQUEST_MULTIPART_EMPTY);
-
-        var response = new ResultUploadRespose(
-            new DetailSuccessFileListResponse(uploadedFiles, uploadedFiles.Count, totalUploadSize),
-            notUploadedFiles);
-
-        return await Result<ResultUploadRespose>.SuccessAsync(response);
+        catch(UnsupportedMediaTypeException)
+        {
+            throw;
+        }
+        catch(CommonValidationException ex)
+        {
+            throw new CommonValidationException(ex.Errors);
+        }
+        catch(Exception ex)
+        {
+            throw new BadRequestException($"Error procesando la carga de archivos: {ex.Message}");
+        }
     }
 
     private static void ValidateRequestHeaders(HttpRequest request)
