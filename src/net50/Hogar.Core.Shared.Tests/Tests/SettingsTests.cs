@@ -30,6 +30,7 @@ namespace Hogar.Core.Shared.Tests
                 MaxFileCount = 10,
                 MaxTotalFileSizeBytes = 10 * 1024 * 1024,
                 UploadDirectory = "/uploads",
+                HeadersLengthLimit = 1024,
                 AllowedFileExtensions = new[] { ".jpg", ".png" }
             };
 
@@ -37,6 +38,7 @@ namespace Hogar.Core.Shared.Tests
             Assert.Equal(10, settings.MaxFileCount);
             Assert.Equal(10 * 1024 * 1024, settings.MaxTotalFileSizeBytes);
             Assert.Equal("/uploads", settings.UploadDirectory);
+            Assert.Equal(1024, settings.HeadersLengthLimit);
             Assert.Equal(new[] { ".jpg", ".png" }, settings.AllowedFileExtensions);
         }
 

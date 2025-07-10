@@ -1,4 +1,6 @@
-﻿namespace Hogar.Core.Shared.Tests;
+﻿using System.Diagnostics;
+
+namespace Hogar.Core.Shared.Tests;
 
 public class MultipartFileProcessorEngineTests
 {

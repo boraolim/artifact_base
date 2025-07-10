@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Threading.Tasks;
-using Hogar.Core.Shared.Exceptions;
-using Hogar.Core.Shared.Settings;
-using Hogar.Core.Shared.Tests.Helpers;
-using Hogar.Core.Shared.Tests.Models;
-using Hogar.Core.Shared.Wrappers;
+using System.Collections.Generic;
+
+using Xunit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using Xunit;
+
+using Hogar.Core.Shared.Wrappers;
+using Hogar.Core.Shared.Settings;
+using Hogar.Core.Shared.Exceptions;
+using Hogar.Core.Shared.Tests.Models;
+using Hogar.Core.Shared.Tests.Helpers;
 
 namespace Hogar.Core.Shared.Tests
 {

@@ -3,7 +3,7 @@
 ```Bash
 $ dotnet clean && dotnet build
 $ dotnet pack --configuration Release
-$ dotnet nuget push "Hogar.Core.Shared/bin/Release/Hogar.Core.Shared50.1.0.0.nupkg" -s "github"
+$ dotnet nuget push "Hogar.Core.Shared/bin/Release/Hogar.Core.Shared50.1.0.0.nupkg" -s "github" --api-key "YOUR_TOKEN"
 $ dotnet nuget add source https://nuget.pkg.github.com/USUARIO/index.json --name github --username USUARIO --password TU_TOKEN --store-password-in-clear-text
 ```
 

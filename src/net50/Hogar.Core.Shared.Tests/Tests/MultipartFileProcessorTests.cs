@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Text;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -118,22 +119,26 @@ namespace Hogar.Core.Shared.Tests
         [Fact]
         public async Task ProcessAsync_ShouldThrow_WhenExceedsMaxFileCount()
         {
+            // Arrange
             var boundary = "test-boundary";
-            var multipartBody = new StringBuilder();
-            for(int i = 0; i < 3; i++) // 3 files, limit is 2
+            var content = new MultipartFormDataContent(boundary);
+
+            // Agregamos 3 archivos cuando el límite es 2
+            for(int i = 0; i < 3; i++)
             {
-                multipartBody.AppendLine($"--{boundary}");
-                multipartBody.AppendLine("Content-Disposition: form-data; name=\"file\"; filename=\"test.txt\"");
-                multipartBody.AppendLine("Content-Type: text/plain");
-                multipartBody.AppendLine();
-                multipartBody.AppendLine("Test content");
+                var fileContent = new StringContent("Test content");
+                content.Add(fileContent, "file", $"test{i}.txt");
             }
-            multipartBody.AppendLine($"--{boundary}--");
+
+            var stream = new MemoryStream();
+            await content.CopyToAsync(stream);
+            stream.Position = 0;
 
             var context = new DefaultHttpContext();
             context.Request.ContentType = $"multipart/form-data; boundary={boundary}";
-            context.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes(multipartBody.ToString()));
+            context.Request.Body = stream;
 
+            // Act & Assert
             await Assert.ThrowsAsync<BadRequestException>(() =>
                 _processor.ProcessAsync<object>(context.Request, (f, s) => Task.FromResult<object>(new { Succeded = true })));
         }
@@ -141,21 +146,26 @@ namespace Hogar.Core.Shared.Tests
         [Fact]
         public async Task ProcessAsync_ShouldProcessValidFiles()
         {
+            // Arrange
             var boundary = "test-boundary";
-            var multipartBody = new StringBuilder();
-            multipartBody.AppendLine($"--{boundary}");
-            multipartBody.AppendLine("Content-Disposition: form-data; name=\"file\"; filename=\"file1.txt\"");
-            multipartBody.AppendLine("Content-Type: text/plain");
-            multipartBody.AppendLine();
-            multipartBody.AppendLine("Test content");
-            multipartBody.AppendLine($"--{boundary}--");
+            var content = new MultipartFormDataContent(boundary);
+
+            // Agrega un archivo válido
+            var fileContent = new StringContent("Test content");
+            content.Add(fileContent, "file", "file1.txt");
+
+            var stream = new MemoryStream();
+            await content.CopyToAsync(stream);
+            stream.Position = 0;
 
             var context = new DefaultHttpContext();
             context.Request.ContentType = $"multipart/form-data; boundary={boundary}";
-            context.Request.Body = new MemoryStream(Encoding.UTF8.GetBytes(multipartBody.ToString()));
+            context.Request.Body = stream;
 
+            // Act
             var result = await _processor.ProcessAsync<object>(context.Request, (f, s) => Task.FromResult<object>(new { Succeded = true }));
 
+            // Assert
             Assert.True(result.Succeded);
             Assert.Single(result.Data.UploadesFiles.UploadesFiles);
         }
@@ -222,9 +232,9 @@ namespace Hogar.Core.Shared.Tests
             var section = new MultipartSection
             {
                 Headers = new Dictionary<string, StringValues>
-                {
-                    { "Content-Disposition", "invalid-header" }
-                }
+            {
+                { "Content-Disposition", "invalid-header" }
+            }
             };
 
             // Act
@@ -244,9 +254,9 @@ namespace Hogar.Core.Shared.Tests
             var section = new MultipartSection
             {
                 Headers = new Dictionary<string, StringValues>
-                {
-                    { "Content-Disposition", $"form-data; name=\"file\"; filename=\"\"" }
-                }
+            {
+                { "Content-Disposition", $"form-data; name=\"file\"; filename=\"\"" }
+            }
             };
 
             // Act
@@ -265,9 +275,9 @@ namespace Hogar.Core.Shared.Tests
             var section = new MultipartSection
             {
                 Headers = new Dictionary<string, StringValues>
-                {
-                    { "Content-Disposition", $"attachment; name=\"file\"; filename=\"test.txt\"" }
-                }
+            {
+                { "Content-Disposition", $"attachment; name=\"file\"; filename=\"test.txt\"" }
+            }
             };
 
             // Act
@@ -286,9 +296,9 @@ namespace Hogar.Core.Shared.Tests
             var section = new MultipartSection
             {
                 Headers = new Dictionary<string, StringValues>
-                {
-                    { "Content-Disposition", $"form-data; name=\"file\"; filename=\"test.txt\"" }
-                }
+            {
+                { "Content-Disposition", $"form-data; name=\"file\"; filename=\"test.txt\"" }
+            }
             };
 
             // Act
@@ -313,9 +323,9 @@ namespace Hogar.Core.Shared.Tests
             var section = new MultipartSection
             {
                 Headers = new Dictionary<string, StringValues>
-                {
-                    { string.Empty, headerValue }
-                }
+            {
+                { string.Empty, headerValue }
+            }
             };
 
             // Act
@@ -338,9 +348,9 @@ namespace Hogar.Core.Shared.Tests
             var section = new MultipartSection
             {
                 Headers = new Dictionary<string, StringValues>
-                {
-                    {"Content-Disposition", headerValue }
-                }
+            {
+                {"Content-Disposition", headerValue }
+            }
             };
 
             // Act
@@ -376,9 +386,9 @@ namespace Hogar.Core.Shared.Tests
             var section = new MultipartSection
             {
                 Headers = new Dictionary<string, StringValues>
-                {
-                    {"", "" }
-                }
+            {
+                {"", "" }
+            }
             };
 
             var result = InvokeIsValidFileSection(section, out var _, out var _);

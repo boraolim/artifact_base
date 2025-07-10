@@ -1,4 +1,6 @@
-﻿namespace Hogar.Core.Shared.Tests.Helpers;
+﻿using System.Net.Http;
+
+namespace Hogar.Core.Shared.Tests.Helpers;
 
 public static class MultipartHelper
 {
@@ -9,25 +11,25 @@ public static class MultipartHelper
 
     public static DefaultHttpContext CreateHttpContextWithMultipleFiles(int fileCount, long sizeBytes = 1024)
     {
-        var boundary = "----WebKitFormBoundaryTest";
-        var context = new DefaultHttpContext();
-        context.Request.ContentType = $"multipart/form-data; boundary={boundary}";
+        var boundary = "test-boundary";
+        var content = new MultipartFormDataContent(boundary);
 
-        var ms = new MemoryStream();
-        using(var writer = new StreamWriter(ms, leaveOpen: true))
+        if(fileCount > 0)
         {
             for(int i = 0; i < fileCount; i++)
             {
-                writer.WriteLine($"--{boundary}");
-                writer.WriteLine($"Content-Disposition: form-data; name=\"file{i}\"; filename=\"test{i}.txt\"");
-                writer.WriteLine("Content-Type: text/plain");
-                writer.WriteLine();
-                writer.WriteLine(new string('a', (int)sizeBytes));
+                var fileContent = new StringContent("Dummy file content");
+                content.Add(fileContent, "file", $"file{i + 1}.txt");
             }
-            writer.WriteLine($"--{boundary}--");
         }
-        ms.Position = 0;
-        context.Request.Body = ms;
+
+        var stream = new MemoryStream();
+        content.CopyToAsync(stream).Wait();
+        stream.Position = 0;
+
+        var context = new DefaultHttpContext();
+        context.Request.ContentType = $"multipart/form-data; boundary={boundary}";
+        context.Request.Body = stream;
 
         return context;
     }
