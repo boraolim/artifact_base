@@ -77,18 +77,62 @@ public class MapperTests
     }
 
     [Fact]
-    public void MapTo_ShouldConvertDictionaryTypes()
+    public void MapTo_ShouldConvertDictionary_WithRealData()
     {
+        // Arrange: Diccionario fuente
         var source = new SourceWithDict
         {
-            Data = new Dictionary<string, int> { { "X", 1 }, { "Y", 2 } }
+            Data = new Dictionary<string, int>
+            {
+                { "A", 10 },
+                { "B", 20 },
+                { "C", 30 }
+            }
         };
 
+        // Act: Mapear al tipo destino
         var result = source.MapTo<TargetWithDict>();
 
+        // Assert: Validar que se mapeó correctamente
+        Assert.NotNull(result);
         Assert.NotNull(result.Data);
-        Assert.Equal(1L, result.Data["X"]);
-        Assert.Equal(2L, result.Data["Y"]);
+        Assert.Equal(3, result.Data.Count);
+
+        Assert.Equal(10L, result.Data["A"]);
+        Assert.Equal(20L, result.Data["B"]);
+        Assert.Equal(30L, result.Data["C"]);
+    }
+
+    [Fact]
+    public void MapTo_ShouldHandleEmptyDictionary()
+    {
+        // Arrange
+        var source = new SourceWithDict
+        {
+            Data = new Dictionary<string, int>()
+        };
+
+        // Act
+        var result = source.MapTo<TargetWithDict>();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.NotNull(result.Data);
+        Assert.Empty(result.Data);
+    }
+
+    [Fact]
+    public void MapTo_ShouldHandleNullDictionary()
+    {
+        // Arrange
+        var source = new SourceWithDict { Data = null };
+
+        // Act
+        var result = source.MapTo<TargetWithDict>();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Null(result.Data);
     }
 
     [Fact]
@@ -374,14 +418,13 @@ public class MapperTests
     [Theory]
     [InlineData("John Doe", 30, "Main St.", "New York", "NY", "Developer", "123-456-7890")]
     [InlineData("Jane Smith", 25, "Oak Ave.", "Los Angeles", "CA", "Designer", "098-765-4321")]
-    public void Map_ShouldMapPropertiesCorrectly_WithTheory(
-            string fullName,
-            int age,
-            string street,
-            string city,
-            string state,
-            string occupation,
-            string phoneNumber)
+    public void Map_ShouldMapPropertiesCorrectly_WithTheory(string fullName,
+                                                            int age,
+                                                            string street,
+                                                            string city,
+                                                            string state,
+                                                            string occupation,
+                                                            string phoneNumber)
     {
         // Arrange
         var sourcePerson = new SourcePerson
@@ -389,13 +432,21 @@ public class MapperTests
             FullName = fullName,
             Age = age,
             Street = street,
-            Ocuppation = occupation
+            City = city,
+            State = state,
+            Ocuppation = occupation,
+            PhoneNumber = phoneNumber
         };
 
         var target = sourcePerson.MapTo<TargetPerson>();
 
         Assert.NotNull(target);
         Assert.Equal(sourcePerson.FullName, target.FullName);
+        Assert.Equal(sourcePerson.Age, target.Age);
+        Assert.Equal(sourcePerson.Street, target.Street);
+        Assert.Equal(sourcePerson.City, target.City);
+        Assert.Equal(sourcePerson.State, target.State);
         Assert.Equal(sourcePerson.Ocuppation, target.JobTitle);
+        Assert.Equal(sourcePerson.PhoneNumber, target.PhoneNumber);
     }
 }

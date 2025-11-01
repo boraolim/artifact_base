@@ -133,12 +133,15 @@ namespace Hogar.Core.Shared.Tests.Models
         public string FullName { get; set; }
         public int Age { get; set; }
         public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
 
         [IgnoreMap]
         public string IgnoredField { get; set; }
 
         [MapTo("JobTitle")]
         public string Ocuppation { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class TargetPerson
@@ -146,6 +149,9 @@ namespace Hogar.Core.Shared.Tests.Models
         public string FullName { get; set; }
         public int Age { get; set; }
         public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
         public string JobTitle { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }
