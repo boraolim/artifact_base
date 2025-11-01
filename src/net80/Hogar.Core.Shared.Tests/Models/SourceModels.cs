@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-
-using Microsoft.Net.Http.Headers;
-using Microsoft.AspNetCore.WebUtilities;
+﻿using Hogar.Core.Shared.Attributes;
 
 namespace Hogar.Core.Shared.Tests.Models
 {
@@ -129,5 +126,32 @@ namespace Hogar.Core.Shared.Tests.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+    }
+
+    public class SourcePerson
+    {
+        public string FullName { get; set; }
+        public int Age { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+
+        [IgnoreMap]
+        public string IgnoredField { get; set; }
+
+        [MapTo("JobTitle")]
+        public string Ocuppation { get; set; }
+        public string PhoneNumber { get; set; }
+    }
+
+    public class TargetPerson
+    {
+        public string FullName { get; set; }
+        public int Age { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string JobTitle { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

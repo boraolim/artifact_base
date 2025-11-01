@@ -7,23 +7,24 @@
         <RootNamespace>Hogar.Core.Shared</RootNamespace>
         <ServerGarbageCollection>true</ServerGarbageCollection>
         <CheckEolTargetFramework>false</CheckEolTargetFramework>
-        <NoWarn>$(NoWarn);1701;1702;NU1701;1571;1723;1710;1573;1572;0414;0169;1591;0219;8002;AD0001;8618;8765;8604;8625;8601;8600;8062;8619;8602;8603;8604;0618;8634
+        <NoWarn>
+            $(NoWarn);1701;1702;NU1701;1571;1723;1710;1573;1572;0414;0169;1591;0219;8002;AD0001;8618;8765;8604;8625;8601;8600;8062;8619;8602;8603;8604;0618;8634
         </NoWarn>
 
         <!-- Assembly information. -->
-        <Version>1.0.3.0</Version>
-        <AssemblyVersion>1.0.3.0</AssemblyVersion>
-        <FileVersion>1.0.3.0</FileVersion>
+        <Version>1.0.4.0</Version>
+        <AssemblyVersion>1.0.4.0</AssemblyVersion>
+        <FileVersion>1.0.4.0</FileVersion>
         <Company>Hogar S.A. de C.V.</Company>
         <Authors>Sistemas TI</Authors>
         <Product>Hogar.Core.Shared80.dll</Product>
         <Description>Proyecto para funciones de uso común y compartido.</Description>
         <Copyright>© Hogar S.A. de C.V. 2021-2025. All rights reserved.</Copyright>
-        <PackageReleaseNotes>Version: 1.0.3.0. Date: 2024/11/15.</PackageReleaseNotes>
+        <PackageReleaseNotes>Version: 1.0.4.0. Date: 2025/11/01.</PackageReleaseNotes>
         <PackageTags>Hogar, Hogar.Core.Shared80.dll</PackageTags>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-	    <RepositoryUrl>http://github.com/boraolim/artifact_base.git</RepositoryUrl>
+        <RepositoryUrl>http://github.com/boraolim/artifact_base.git</RepositoryUrl>
 
         <!-- Other additional settings. -->
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>

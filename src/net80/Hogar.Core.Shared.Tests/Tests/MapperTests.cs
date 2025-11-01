@@ -370,4 +370,39 @@ public class MapperTests
         var memberExpr = result as MemberExpression;
         Assert.Equal(nameof(TestClassForProp.SomeField), memberExpr.Member.Name);
     }
+
+    [Theory]
+    [InlineData("John Doe", 30, "Main St.", "New York", "NY", "Developer", "123-456-7890")]
+    [InlineData("Jane Smith", 25, "Oak Ave.", "Los Angeles", "CA", "Designer", "098-765-4321")]
+    public void Map_ShouldMapPropertiesCorrectly_WithTheory(string fullName,
+                                                            int age,
+                                                            string street,
+                                                            string city,
+                                                            string state,
+                                                            string occupation,
+                                                            string phoneNumber)
+    {
+        // Arrange
+        var sourcePerson = new SourcePerson
+        {
+            FullName = fullName,
+            Age = age,
+            Street = street,
+            City = city,
+            State = state,
+            Ocuppation = occupation,
+            PhoneNumber = phoneNumber
+        };
+
+        var target = sourcePerson.MapTo<TargetPerson>();
+
+        Assert.NotNull(target);
+        Assert.Equal(sourcePerson.FullName, target.FullName);
+        Assert.Equal(sourcePerson.Age, target.Age);
+        Assert.Equal(sourcePerson.Street, target.Street);
+        Assert.Equal(sourcePerson.City, target.City);
+        Assert.Equal(sourcePerson.State, target.State);
+        Assert.Equal(sourcePerson.Ocuppation, target.JobTitle);
+        Assert.Equal(sourcePerson.PhoneNumber, target.PhoneNumber);
+    }
 }

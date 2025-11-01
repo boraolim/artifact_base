@@ -4,6 +4,7 @@ global using System.Linq;
 global using System.Text;
 global using System.Text.Json;
 global using System.Reflection;
+global using System.Diagnostics;
 global using System.Collections;
 global using System.Net.Security;
 global using System.Globalization;
@@ -23,6 +24,7 @@ global using Microsoft.AspNetCore.Http;
 global using Microsoft.Net.Http.Headers;
 global using Microsoft.Extensions.Hosting;
 global using Microsoft.Extensions.Options;
+global using Microsoft.Extensions.Logging;
 global using Microsoft.AspNetCore.WebUtilities;
 global using Microsoft.Extensions.DependencyInjection;
 

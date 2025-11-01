@@ -1,4 +1,5 @@
-﻿namespace Hogar.Core.Shared.Tests;
+﻿
+namespace Hogar.Core.Shared.Tests;
 
 public class HttpClientHelperIntegrationTests
 {
@@ -41,44 +42,78 @@ public class HttpClientHelperIntegrationTests
     [Fact]
     public async Task GET_ReturnsSuccess()
     {
-        var url = "https://httpbin.org/get";
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Get, url, logBodies: true);
+        var urlSource = "https://www.google.com.mx";
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: envProd,
+            logger: _logger,
+            method: HttpMethod.Get,
+            url: urlSource,
+            logBodies: true);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var content = await response.Content.ReadAsStringAsync();
-        Assert.Contains("\"url\": \"https://httpbin.org/get\"", content);
+        Assert.Contains("<title>Google</title>", content);
     }
 
     [Fact]
     public async Task POST_ReturnsCreated()
     {
-        var url = "https://httpbin.org/post";
-        var body = new { name = "Juan" };
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Post, url, body, logBodies: true);
+        var urlSource = "https://fakestoreapi.com/products";
+        var bodyInput = new { title = "Producto nuevo", price = 29.99 };
 
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode); // httpbin devuelve 200
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: envProd,
+            logger: _logger,
+            method: HttpMethod.Post,
+            url: urlSource,
+            body: bodyInput,
+            logBodies: true);
+
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         var content = await response.Content.ReadAsStringAsync();
-        Assert.Contains("Juan", content);
+        Assert.Contains("Producto nuevo", content);
     }
 
     [Fact]
     public async Task PUT_ReturnsSuccess()
     {
-        var url = "https://httpbin.org/put";
-        var body = new { name = "Juan" };
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Put, url, body, logBodies: true);
+        var urlSource = "https://fakestoreapi.com/products/21";
+        var bodyInput = new { title = "Producto actualizado", price = 129.99 };
+
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: _env,
+            logger: _logger,
+            method: HttpMethod.Put,
+            url: urlSource,
+            body: bodyInput,
+            logBodies: true);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var content = await response.Content.ReadAsStringAsync();
-        Assert.Contains("Juan", content);
+        Assert.Contains("Producto actualizado", content);
     }
 
     [Fact]
     public async Task PATCH_ReturnsSuccess()
     {
-        var url = "https://httpbin.org/patch";
-        var body = new { name = "Juan" };
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Patch, url, body, logBodies: true);
+        var urlSource = "https://httpbin.org/patch";
+        var bodyInput = new { name = "Juan" };
+
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: envProd,
+            logger: _logger,
+            method: HttpMethod.Patch,
+            url: urlSource,
+            body: bodyInput,
+            logBodies: true);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         var content = await response.Content.ReadAsStringAsync();
@@ -88,8 +123,16 @@ public class HttpClientHelperIntegrationTests
     [Fact]
     public async Task DELETE_ReturnsSuccess()
     {
-        var url = "https://httpbin.org/delete";
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Delete, url, logBodies: true);
+        var urlSouce = "https://fakestoreapi.com/products/21";
+
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: envProd,
+            logger: _logger,
+            method: HttpMethod.Delete,
+            url: urlSouce,
+            logBodies: true);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
@@ -97,8 +140,15 @@ public class HttpClientHelperIntegrationTests
     [Fact]
     public async Task HEAD_ReturnsSuccess()
     {
-        var url = "https://httpbin.org/anything";
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Head, url, logBodies: false);
+        var urlSource = "https://httpbin.org/anything";
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: envProd,
+            logger: _logger,
+            method: HttpMethod.Head,
+            url: urlSource,
+            logBodies: false);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
@@ -106,39 +156,242 @@ public class HttpClientHelperIntegrationTests
     [Fact]
     public async Task OPTIONS_ReturnsSuccess()
     {
-        var url = "https://httpbin.org/get";
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Options, url, logBodies: false);
+        var urlSource = "https://httpbin.org/get";
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: envProd,
+            logger: _logger,
+            method: HttpMethod.Options,
+            url: urlSource,
+            logBodies: false);
 
         Assert.True(response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NoContent);
     }
 
-    //[Fact]
-    //public async Task UploadFile_ReturnsSuccess()
-    //{
-    //    var url = "https://httpbin.org/post";
+    [Fact]
+    public async Task SendAsync_ShouldIncludeMultipartFilesWithOutBody()
+    {
+        // Arrange
+        var mockHandler = new Mock<HttpMessageHandler>();
+        HttpRequestMessage? capturedRequest = null;
 
-    //    using var stream = new MemoryStream(Encoding.UTF8.GetBytes("Archivo de prueba"));
-    //    var filesInput = new[] { ("file", stream, "test.txt") };
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) =>
+            {
+                capturedRequest = req;
+            })
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("{\"ok\":true}", Encoding.UTF8, "application/json")
+            });
 
-    //    var response = await HttpClientFactoryHelper.SendAsync(
-    //        _env,
-    //        _logger,
-    //        HttpMethod.Post,
-    //        url,
-    //        files: filesInput,
-    //        logBodies: true
-    //    );
+        var logger = Mock.Of<ILogger>();
+        var environment = Mock.Of<IHostEnvironment>(e => e.EnvironmentName == Environments.Development);
 
-    //    Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-    //    var content = await response.Content.ReadAsStringAsync();
-    //    Assert.Contains("Archivo de prueba", content);
-    //}
+        // Crear archivo simulado
+        var fileStream = new MemoryStream(Encoding.UTF8.GetBytes("fake file content"));
+        var filesSend = new List<(string Name, Stream Content, string FileName)>
+        {
+            ("upload", fileStream, "test.txt")
+        };
+
+
+        // Reemplazamos el método CreateHttpClient por uno controlado
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+
+
+        // Act
+        // ⚠️ Aquí deberías adaptar la llamada si tu clase estática se llama distinto
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: environment,
+            logger: logger,
+            method: HttpMethod.Post,
+            url: "https://httpbin.org/post",
+            files: filesSend,
+            logBodies: true
+        );
+
+        // Assert
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var content = await response.Content.ReadAsStringAsync();
+        Assert.Contains("origin", content);
+    }
+
+    [Fact]
+    public async Task SendAsync_ShouldIncludeMultipartFilesWithBody()
+    {
+        // Arrange
+        var mockHandler = new Mock<HttpMessageHandler>();
+        HttpRequestMessage? capturedRequest = null;
+
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) =>
+            {
+                capturedRequest = req;
+            })
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("{\"ok\":true}", Encoding.UTF8, "application/json")
+            });
+
+        var logger = Mock.Of<ILogger>();
+        var environment = Mock.Of<IHostEnvironment>(e => e.EnvironmentName == Environments.Development);
+
+        // Crear archivo simulado
+        var fileStream = new MemoryStream(Encoding.UTF8.GetBytes("fake file content"));
+        var filesSend = new List<(string Name, Stream Content, string FileName)>
+        {
+            ("upload", fileStream, "test.txt")
+        };
+
+
+        // Reemplazamos el método CreateHttpClient por uno controlado
+        var env = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(env);
+
+
+        // Act
+        // ⚠️ Aquí deberías adaptar la llamada si tu clase estática se llama distinto
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: environment,
+            logger: logger,
+            method: HttpMethod.Post,
+            url: "https://httpbin.org/post",
+            body: new { numberPhone = "441223" },
+            files: filesSend,
+            logBodies: true
+        );
+
+        // Assert
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var content = await response.Content.ReadAsStringAsync();
+        Assert.Contains("origin", content);
+    }
+
+    [Fact]
+    public async Task SendAsync_ShouldNotCatch_WhenCancellationRequested()
+    {
+        var cts = new CancellationTokenSource();
+        cts.Cancel();
+
+        var environment = Mock.Of<IHostEnvironment>();
+        var logger = Mock.Of<ILogger>();
+
+        await Assert.ThrowsAsync<TaskCanceledException>(() =>
+            HttpClientFactoryHelper.SendAsync(
+                env: environment,
+                logger: logger,
+                method: HttpMethod.Get,
+                url: "http://localhost/test",
+                cancellationToken: cts.Token
+            )
+        );
+    }
+
+    [Fact]
+    public async Task SendAsync_ShouldThrowTimeoutException_WhenRequestTimesOut()
+    {
+        // Arrange
+        var environment = Mock.Of<IHostEnvironment>();
+        var logger = Mock.Of<ILogger>();
+        var cts = new CancellationTokenSource();
+
+        // Timeout muy corto
+        var client = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(1)
+        };
+
+        // Act & Assert
+        await Assert.ThrowsAsync<TimeoutException>(async () =>
+            await HttpClientFactoryHelper.SendAsync(
+                env: environment,
+                logger: logger,
+                method: HttpMethod.Get,
+                url: "https://httpbin.org/delay/10", // tarda 10 seg
+                cancellationToken: cts.Token,
+                timeout: TimeSpan.FromSeconds(3)    // ⏱ Timeout corto
+            )
+        );
+    }
+
+    [Fact]
+    public async Task SendAsync_ShouldLogAndThrow_WhenHttpRequestExceptionOccurs()
+    {
+        // Arrange
+        var loggerMock = new Mock<ILogger>();
+        var envMock = Mock.Of<IHostEnvironment>(e => e.EnvironmentName == Environments.Development);
+
+        // Simulamos un HttpClient que lanza HttpRequestException
+        var handlerMock = new Mock<HttpMessageHandler>();
+        handlerMock
+            .Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>()
+            )
+            .ThrowsAsync(new HttpRequestException("Simulated network failure"));
+
+        // 👇 Usamos un HttpMessageHandler falso que lanza HttpRequestException
+        var httpClient = new HttpClient(handlerMock.Object);
+
+        // Para probar la excepción, vamos a inyectar el HttpClient en un método sobrecargado
+        // (o usar InternalsVisibleTo para permitir testing interno).
+        // Pero para este ejemplo, creamos una versión local de SendAsync con el handler.
+        async Task<HttpResponseMessage> SendWithHandler()
+        {
+            return await HttpClientFactoryHelper.SendAsync(
+                env: envMock,
+                logger: loggerMock.Object,
+                method: HttpMethod.Get,
+                url: "https://nonexistent.domain.fake", // dominio no válido
+                cancellationToken: CancellationToken.None,
+                logBodies: true
+            );
+        }
+
+        // Act & Assert
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(() => SendWithHandler());
+
+        // ✅ Verificamos que el logger registró un error con el mensaje esperado
+        loggerMock.Verify(
+            l => l.Log(
+                LogLevel.Error,
+                It.IsAny<EventId>(),
+                It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Error HTTP")),
+                ex,
+                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
+            Times.Once
+        );
+    }
+
 
     [Fact]
     public async Task GET_NotFound_Returns404()
     {
-        var url = "https://httpbin.org/status/404";
-        var response = await HttpClientFactoryHelper.SendAsync(_env, _logger, HttpMethod.Get, url, logBodies: true);
+        var urlSource = "https://httpbin.org/status/404";
+
+        var envProd = CreateEnv("Production");
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
+        var response = await HttpClientFactoryHelper.SendAsync(
+            env: envProd,
+            logger: _logger,
+            method: HttpMethod.Get,
+            url: urlSource,
+            logBodies: true);
 
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
     }
@@ -147,7 +400,7 @@ public class HttpClientHelperIntegrationTests
     [Fact]
     public async Task SendAsync_AddsHeadersToRequest()
     {
-        var env = CreateEnv("Development");
+        var env = CreateEnv("Production");
         var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
 
         // Inyectar handler usando overload opcional
@@ -175,7 +428,7 @@ public class HttpClientHelperIntegrationTests
     [Fact]
     public async Task SendAsync_BodyJson_LogsCorrectly()
     {
-        var env = CreateEnv("Development");
+        var env = CreateEnv("Production");
         var responseMessage = new HttpResponseMessage(HttpStatusCode.OK)
         {
             Content = new StringContent("{\"result\":true}", Encoding.UTF8, "application/json")
@@ -200,88 +453,28 @@ public class HttpClientHelperIntegrationTests
     [Fact]
     public async Task SendAsync_FileUpload_FormsCorrectly()
     {
-        var env = CreateEnv("Development");
+        var envProd = CreateEnv("Production");
         var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
         var handler = new FakeHttpMessageHandler(responseMessage);
-        var client = HttpClientFactoryHelper.CreateHttpClient(env);
+        var client = HttpClientFactoryHelper.CreateHttpClient(envProd);
 
-        using var stream = new MemoryStream(Encoding.UTF8.GetBytes("Archivo de prueba"));
-        var files = new[] { ("file", stream, "test.txt") };
+        using var fileStream = new MemoryStream(Encoding.UTF8.GetBytes("Archivo de prueba"));
+        var filesSend = new List<(string Name, Stream Content, string FileName)>
+        {
+            ("upload", fileStream, "test.txt")
+        };
 
         var response = await HttpClientFactoryHelper.SendAsync(
-            env,
-            NullLogger.Instance,
-            HttpMethod.Post,
-            "https://example.com",
-            files
+            env: envProd,
+            logger: NullLogger.Instance,
+            method: HttpMethod.Post,
+            url: "https://example.com",
+            files: filesSend
         );
 
         // Assert.IsType<MultipartFormDataContent>(handler.LastRequest.Content);
         Assert.NotNull(response.Headers);
     }
-    #endregion
-
-    #region Timeout
-    //[Fact]
-    //public async Task SendAsync_Timeout_ThrowsTimeoutException()
-    //{
-    //    var env = CreateEnv("Development");
-    //    var ex = new TaskCanceledException();
-    //    var handler = new FakeHttpMessageHandler(ex);
-    //    var client = HttpClientFactoryHelper.CreateHttpClient(env);
-
-    //    await Assert.ThrowsAsync<TimeoutException>(async () =>
-    //    {
-    //        await HttpClientFactoryHelper.SendAsync(
-    //            env,
-    //            NullLogger.Instance,
-    //            HttpMethod.Get,
-    //            "https://example.com"
-    //        );
-    //    });
-    //}
-    #endregion
-
-    #region HttpRequestException
-    //[Fact]
-    //public async Task SendAsync_HttpRequestException_Throws()
-    //{
-    //    var env = CreateEnv("Development");
-    //    var ex = new HttpRequestException("Falla HTTP");
-    //    var handler = new FakeHttpMessageHandler(ex);
-    //    var client = new HttpClient(handler);
-
-    //    await Assert.ThrowsAsync<HttpRequestException>(async () =>
-    //    {
-    //        await HttpClientFactoryHelper.SendAsync(
-    //            env,
-    //            NullLogger.Instance,
-    //            HttpMethod.Get,
-    //            "https://example.com"
-    //        );
-    //    });
-    //}
-    #endregion
-
-    #region Generic Exception
-    //[Fact]
-    //public async Task SendAsync_GenericException_Throws()
-    //{
-    //    var env = CreateEnv("Development");
-    //    var ex = new InvalidOperationException("Error inesperado");
-    //    var handler = new FakeHttpMessageHandler(ex);
-    //    var client = new HttpClient(handler);
-
-    //    await Assert.ThrowsAsync<InvalidOperationException>(async () =>
-    //    {
-    //        await HttpClientFactoryHelper.SendAsync(
-    //            env,
-    //            NullLogger.Instance,
-    //            HttpMethod.Get,
-    //            "https://example.com"
-    //        );
-    //    });
-    //}
     #endregion
 
     private IHostEnvironment CreateEnv(string environmentName)

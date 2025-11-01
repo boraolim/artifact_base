@@ -96,6 +96,19 @@ public static class Functions
         return RandomNumberGenerator.GetInt32(min, max);
     }
 
+    public static string TruncateText(string textToTruncate, int maxLength)
+    {
+        if(maxLength < 0)
+            throw new ArgumentOutOfRangeException(nameof(maxLength), "maxLength no puede ser negativo");
+
+        if(string.IsNullOrEmpty(textToTruncate))
+            return textToTruncate!;
+
+        return textToTruncate.Length <= maxLength
+            ? textToTruncate
+            : textToTruncate.Substring(0, maxLength) + "...(truncated)";
+    }
+
     #region "Métodos privados."
 
     private static string ClearText(string contentText, double retryInMiliseconds = 0)
