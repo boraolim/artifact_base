@@ -3,9 +3,9 @@ using System.Text.Json;
 using System.Globalization;
 using System.Text.Json.Serialization;
 
-using FormatConstantsCore = Hogar.Core.Shared.Constants.FormatConstants;
+using FormatConstantsCore = Utilities.Core.Shared.Constants.FormatConstants;
 
-namespace Hogar.Core.Shared.Converters
+namespace Utilities.Core.Shared.Converters
 {
     public class DateTimeJsonConverter : JsonConverter<DateTime>
     {

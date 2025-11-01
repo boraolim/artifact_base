@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Hogar.Core.Shared.Converters
+namespace Utilities.Core.Shared.Converters
 {
     public sealed class ByteArrayJsonConverter : JsonConverter<byte[]>
     {

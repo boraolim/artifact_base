@@ -3,12 +3,12 @@ using System.Text;
 using System.Buffers.Binary;
 using System.Security.Cryptography;
 
-using Hogar.Core.Shared.Utils;
+using Utilities.Core.Shared.Utils;
 
-using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MainConstantsCore = Utilities.Core.Shared.Constants.MainConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Services
+namespace Utilities.Core.Shared.Services
 {
     public sealed class CypherAes : ICypherAes
     {

@@ -6,13 +6,13 @@ using Xunit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-using Hogar.Core.Shared.Wrappers;
-using Hogar.Core.Shared.Settings;
-using Hogar.Core.Shared.Exceptions;
-using Hogar.Core.Shared.Tests.Models;
-using Hogar.Core.Shared.Tests.Helpers;
+using Utilities.Core.Shared.Wrappers;
+using Utilities.Core.Shared.Settings;
+using Utilities.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Tests.Models;
+using Utilities.Core.Shared.Tests.Helpers;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class MultipartFileProcessorEngineTests
     {

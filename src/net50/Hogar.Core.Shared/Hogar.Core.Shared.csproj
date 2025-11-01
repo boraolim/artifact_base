@@ -2,8 +2,8 @@
     <PropertyGroup>
         <LangVersion>9.0</LangVersion>
         <TargetFramework>net5.0</TargetFramework>
-        <AssemblyName>Hogar.Core.Shared50</AssemblyName>
-        <RootNamespace>Hogar.Core.Shared</RootNamespace>
+        <AssemblyName>Utilities.Core.Shared50</AssemblyName>
+        <RootNamespace>Utilities.Core.Shared</RootNamespace>
         <ServerGarbageCollection>true</ServerGarbageCollection>
         <CheckEolTargetFramework>false</CheckEolTargetFramework>
         <NoWarn>
@@ -18,11 +18,11 @@
         <FileVersion>1.0.3.0</FileVersion>
         <Company>Hogar S.A. de C.V.</Company>
         <Authors>Sistemas TI</Authors>
-        <Product>Hogar.Core.Shared50.dll</Product>
+        <Product>Utilities.Core.Shared50.dll</Product>
         <Description>Proyecto para funciones de uso común y compartido.</Description>
         <Copyright>© Hogar S.A. de C.V. 2021-2025. All rights reserved.</Copyright>
         <PackageReleaseNotes>Version: 1.0.3.0. Date: 2024/11/15.</PackageReleaseNotes>
-        <PackageTags>Hogar, Hogar.Core.Shared50.dll</PackageTags>
+        <PackageTags>Hogar, Utilities.Core.Shared50.dll</PackageTags>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	    <RepositoryUrl>https://github.com/boraolim/artifact_base</RepositoryUrl>

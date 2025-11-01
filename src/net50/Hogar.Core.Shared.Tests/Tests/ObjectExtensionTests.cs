@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 using Xunit;
 
-using Hogar.Core.Shared.Extensions;
-using Hogar.Core.Shared.Tests.Models;
+using Utilities.Core.Shared.Extensions;
+using Utilities.Core.Shared.Tests.Models;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class ObjectExtensionTests
     {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
-namespace Hogar.Core.Shared.Extensions
+namespace Utilities.Core.Shared.Extensions
 {
     public static class ObjectExtensions
     {

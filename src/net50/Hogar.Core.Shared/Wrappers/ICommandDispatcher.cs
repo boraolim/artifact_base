@@ -7,13 +7,13 @@ using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-using Hogar.Core.Shared.Services;
-using Hogar.Core.Shared.Extensions;
-using Hogar.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Services;
+using Utilities.Core.Shared.Extensions;
+using Utilities.Core.Shared.Exceptions;
 
-using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
+using MainConstantsCore = Utilities.Core.Shared.Constants.MainConstants;
 
-namespace Hogar.Core.Shared.Wrappers
+namespace Utilities.Core.Shared.Wrappers
 {
     public interface ICommandDispatcher
     {

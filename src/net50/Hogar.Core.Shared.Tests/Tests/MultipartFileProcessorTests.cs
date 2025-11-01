@@ -13,13 +13,13 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using Microsoft.AspNetCore.WebUtilities;
 
-using Hogar.Core.Shared.Settings;
-using Hogar.Core.Shared.Wrappers;
-using Hogar.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Settings;
+using Utilities.Core.Shared.Wrappers;
+using Utilities.Core.Shared.Exceptions;
 
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class MultipartFileProcessorTests
     {

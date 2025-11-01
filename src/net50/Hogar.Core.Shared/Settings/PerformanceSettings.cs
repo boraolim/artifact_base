@@ -1,4 +1,4 @@
-﻿namespace Hogar.Core.Shared.Settings
+﻿namespace Utilities.Core.Shared.Settings
 {
     public class PerformanceSettings
     {

@@ -22,6 +22,6 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\Hogar.Core.Shared\Hogar.Core.Shared.csproj" />
+        <ProjectReference Include="..\Utilities.Core.Shared\Utilities.Core.Shared.csproj" />
     </ItemGroup>
 </Project>

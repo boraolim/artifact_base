@@ -8,16 +8,16 @@ using Xunit;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 
-using Hogar.Core.Shared.Services;
-using Hogar.Core.Shared.Wrappers;
-using Hogar.Core.Shared.Exceptions;
-using Hogar.Core.Shared.Tests.Records;
-using Hogar.Core.Shared.Tests.Handlers;
+using Utilities.Core.Shared.Services;
+using Utilities.Core.Shared.Wrappers;
+using Utilities.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Tests.Records;
+using Utilities.Core.Shared.Tests.Handlers;
 
-using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
+using MainConstantsCore = Utilities.Core.Shared.Constants.MainConstants;
 
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class CommandDispatcherTests
     {

@@ -9,11 +9,11 @@ using System.Text.RegularExpressions;
 
 using Xunit;
 
-using Hogar.Core.Shared.Utils;
-using Hogar.Core.Shared.Tests.Constants;
-using Hogar.Core.Shared.Tests.Enums;
+using Utilities.Core.Shared.Utils;
+using Utilities.Core.Shared.Tests.Constants;
+using Utilities.Core.Shared.Tests.Enums;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class FunctionsTests
     {

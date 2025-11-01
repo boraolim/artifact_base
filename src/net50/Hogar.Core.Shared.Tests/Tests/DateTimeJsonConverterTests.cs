@@ -3,10 +3,10 @@ using System.Text.Json;
 
 using Xunit;
 
-using Hogar.Core.Shared.Converters;
-using Hogar.Core.Shared.Tests.Constants;
+using Utilities.Core.Shared.Converters;
+using Utilities.Core.Shared.Tests.Constants;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class DateTimeJsonConverterTests
     {

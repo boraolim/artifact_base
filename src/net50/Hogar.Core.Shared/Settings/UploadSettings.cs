@@ -1,6 +1,6 @@
-﻿using Hogar.Core.Shared.Constants;
+﻿using Utilities.Core.Shared.Constants;
 
-namespace Hogar.Core.Shared.Settings
+namespace Utilities.Core.Shared.Settings
 {
     public class UploadSettings
     {

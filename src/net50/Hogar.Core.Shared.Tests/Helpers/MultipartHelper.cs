@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Hogar.Core.Shared.Exceptions;
-using Hogar.Core.Shared.Tests.Constants;
-using Hogar.Core.Shared.Wrappers;
+using Utilities.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Tests.Constants;
+using Utilities.Core.Shared.Wrappers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Net.Http.Headers;
 
-using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
+using MainConstantsCore = Utilities.Core.Shared.Constants.MainConstants;
 
-namespace Hogar.Core.Shared.Tests.Helpers
+namespace Utilities.Core.Shared.Tests.Helpers
 {
     public static class MultipartHelper
     {

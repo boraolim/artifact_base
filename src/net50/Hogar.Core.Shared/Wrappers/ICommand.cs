@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-using Hogar.Core.Shared.Services;
+using Utilities.Core.Shared.Services;
 
-namespace Hogar.Core.Shared.Wrappers
+namespace Utilities.Core.Shared.Wrappers
 {
     #region "Core"
 

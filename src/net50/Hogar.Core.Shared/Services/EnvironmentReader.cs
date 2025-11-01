@@ -1,9 +1,9 @@
 ﻿using System;
 
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
-using EnvironmentConstantsCore = Hogar.Core.Shared.Constants.EnvironmentConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
+using EnvironmentConstantsCore = Utilities.Core.Shared.Constants.EnvironmentConstants;
 
-namespace Hogar.Core.Shared.Services
+namespace Utilities.Core.Shared.Services
 {
     public sealed class EnvironmentReader : IEnvironmentReader
     {
