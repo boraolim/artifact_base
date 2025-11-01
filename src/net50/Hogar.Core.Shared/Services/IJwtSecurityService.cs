@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Hogar.Core.Shared.Services
+namespace Utilities.Core.Shared.Services
 {
     public interface IJwtSecurityService
     {

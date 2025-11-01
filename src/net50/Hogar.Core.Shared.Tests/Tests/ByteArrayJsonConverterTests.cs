@@ -3,9 +3,9 @@ using System.Text.Json;
 
 using Xunit;
 
-using Hogar.Core.Shared.Converters;
+using Utilities.Core.Shared.Converters;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class ByteArrayJsonConverterTests
     {

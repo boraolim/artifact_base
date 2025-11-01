@@ -8,16 +8,16 @@ using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.WebUtilities;
 
-using Hogar.Core.Shared.Services;
-using Hogar.Core.Shared.Settings;
-using Hogar.Core.Shared.Exceptions;
-using Hogar.Core.Shared.Extensions;
+using Utilities.Core.Shared.Services;
+using Utilities.Core.Shared.Settings;
+using Utilities.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Extensions;
 
-using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
-using FormatConstantsCore = Hogar.Core.Shared.Constants.FormatConstants;
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MainConstantsCore = Utilities.Core.Shared.Constants.MainConstants;
+using FormatConstantsCore = Utilities.Core.Shared.Constants.FormatConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Wrappers
+namespace Utilities.Core.Shared.Wrappers
 {
     public class MultipartFileProcessor : IMultipartFileProcessor
     {

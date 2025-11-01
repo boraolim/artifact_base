@@ -5,7 +5,7 @@ using System.Collections;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 
-namespace Hogar.Core.Shared.Extensions
+namespace Utilities.Core.Shared.Extensions
 {
     public static class GenericMapperExtensions
     {

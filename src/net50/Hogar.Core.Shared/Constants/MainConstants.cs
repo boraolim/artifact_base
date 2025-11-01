@@ -1,6 +1,6 @@
 ﻿using System.Reflection.Metadata;
 
-namespace Hogar.Core.Shared.Constants
+namespace Utilities.Core.Shared.Constants
 {
     public static class MainConstants
     {

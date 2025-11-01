@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 using Xunit;
 
-using Hogar.Core.Shared.Dictionary;
-using Hogar.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Dictionary;
+using Utilities.Core.Shared.Exceptions;
 
-using HttpStatusCodeConstantsCore = Hogar.Core.Shared.Constants.HttpStatusCodeConstants;
+using HttpStatusCodeConstantsCore = Utilities.Core.Shared.Constants.HttpStatusCodeConstants;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class ExceptionDictionaryTests
     {

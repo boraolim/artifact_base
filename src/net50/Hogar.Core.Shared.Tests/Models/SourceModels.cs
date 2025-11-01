@@ -3,7 +3,7 @@
 using Microsoft.Net.Http.Headers;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace Hogar.Core.Shared.Tests.Models
+namespace Utilities.Core.Shared.Tests.Models
 {
     public class SourceModel
     {

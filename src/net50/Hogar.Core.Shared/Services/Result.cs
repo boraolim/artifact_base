@@ -2,10 +2,10 @@
 using System.Net;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Hogar.Core.Shared.Converters;
+using Utilities.Core.Shared.Converters;
 using System.Text.Json.Serialization;
 
-namespace Hogar.Core.Shared.Services
+namespace Utilities.Core.Shared.Services
 {
     public class Result<T> : IResult<T>
     {

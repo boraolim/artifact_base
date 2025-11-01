@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
 
-using Hogar.Core.Shared.Services;
+using Utilities.Core.Shared.Services;
 
-namespace Hogar.Core.Shared.Wrappers
+namespace Utilities.Core.Shared.Wrappers
 {
     public interface IMultipartFileProcessor
     {

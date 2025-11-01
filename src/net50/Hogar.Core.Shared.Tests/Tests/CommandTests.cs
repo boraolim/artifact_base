@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 using Xunit;
 
-using Hogar.Core.Shared.Services;
-using Hogar.Core.Shared.Wrappers;
-using Hogar.Core.Shared.Tests.Records;
+using Utilities.Core.Shared.Services;
+using Utilities.Core.Shared.Wrappers;
+using Utilities.Core.Shared.Tests.Records;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class CommandTests
     {

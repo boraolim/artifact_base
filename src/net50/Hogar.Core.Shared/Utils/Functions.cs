@@ -9,14 +9,14 @@ using System.Collections.Concurrent;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
-using Hogar.Core.Shared.Extensions;
+using Utilities.Core.Shared.Extensions;
 
-using MainConstantsCore = Hogar.Core.Shared.Constants.MainConstants;
-using RegexConstantsCore = Hogar.Core.Shared.Constants.RegexConstants;
-using FormatConstantsCore = Hogar.Core.Shared.Constants.FormatConstants;
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MainConstantsCore = Utilities.Core.Shared.Constants.MainConstants;
+using RegexConstantsCore = Utilities.Core.Shared.Constants.RegexConstants;
+using FormatConstantsCore = Utilities.Core.Shared.Constants.FormatConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Utils
+namespace Utilities.Core.Shared.Utils
 {
     public static class Functions
     {

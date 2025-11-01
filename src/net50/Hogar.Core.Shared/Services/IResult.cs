@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Hogar.Core.Shared.Services
+namespace Utilities.Core.Shared.Services
 {
     public interface IResult<T>
     {

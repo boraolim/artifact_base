@@ -2,9 +2,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Converters
+namespace Utilities.Core.Shared.Converters
 {
     public class EnumJsonConverter<T> : JsonConverter<T> where T : struct, System.Enum
     {

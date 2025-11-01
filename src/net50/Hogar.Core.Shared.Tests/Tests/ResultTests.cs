@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 using Xunit;
 
-using Hogar.Core.Shared.Services;
+using Utilities.Core.Shared.Services;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class ResultTests
     {

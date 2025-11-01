@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using Xunit;
 using FluentValidation.Results;
 
-using Hogar.Core.Shared.Exceptions;
-using Hogar.Core.Shared.Tests.Exceptions;
+using Utilities.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Tests.Exceptions;
 
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class CustomExceptionsTests
     {

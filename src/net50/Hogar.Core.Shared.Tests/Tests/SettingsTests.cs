@@ -2,9 +2,9 @@
 
 using Xunit;
 
-using Hogar.Core.Shared.Settings;
+using Utilities.Core.Shared.Settings;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class SettingsTests
     {

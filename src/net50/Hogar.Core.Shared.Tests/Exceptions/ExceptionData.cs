@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Hogar.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Exceptions;
 using Xunit;
 
-namespace Hogar.Core.Shared.Tests.Exceptions
+namespace Utilities.Core.Shared.Tests.Exceptions
 {
     public static class ExceptionData
     {

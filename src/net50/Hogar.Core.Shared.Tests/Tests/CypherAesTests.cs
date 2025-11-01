@@ -3,12 +3,12 @@ using System.Security.Cryptography;
 
 using Xunit;
 
-using Hogar.Core.Shared.Services;
-using Hogar.Core.Shared.Tests.Constants;
+using Utilities.Core.Shared.Services;
+using Utilities.Core.Shared.Tests.Constants;
 
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class CypherAesTests
     {

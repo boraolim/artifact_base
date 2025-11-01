@@ -1,0 +1,62 @@
+﻿namespace Utilities.Core.Shared.Constants;
+
+public static class MainConstants
+{
+    public const int CFG_ZERO = 0;
+    public const int CFG_ONE_PLUS = 1;
+    public const int CFG_ONE_MINUS = -1;
+    public const ushort CFG_VALUE_DELAY = 250;
+    public const uint CFG_LAST_HOUR_OF_DAY = 23;
+    public const ushort CFG_MAX_KEY_NUMBER = 32;
+    public const ushort CFG_BUFFER_VALUE = 1024;
+    public const uint CFG_MAXIMUM_RETRY = 30000;
+    public const byte CFG_ZERO_HEX = 0xFF;
+    public const uint CFG_LAST_MINUTE_OR_SECOND = 59;
+    public const uint CFG_MINIMUM_PASSWORD_LENGHT = 8;
+    public const uint CFG_MAXIMUM_PASSWORD_LENGHT = 16;
+    public const double CFG_DEFAULT_REGEX_TIMEOUT = 100;
+    public const double CFG_RETRY_DELAY_IN_SECONDS = 30000;
+
+    public const string CFG_ANONYMOUS_LEGEND = "anonymous";
+    public const string CFG_UNKNOWN_LEGEND = "UNKNOWN";
+    public const string CFG_SYSTEM_AUTHOR = "SYSTEM";
+    public const string CFG_API_VERSION_V1 = "1.0";
+    public const string CFG_SHORT_API_VERSION_V1 = "v1";
+    public const string CFG_API_VERSION_V2 = "2.0";
+    public const string CFG_SHORT_API_VERSION_V2 = "v2";
+    public const string CFG_API_ROUTE_PATTERN = "api/v{version:apiVersion}/[controller]";
+    public const string CFG_VALUE_CORS = "Any";
+    public const string CFG_PATH_HEALTH = "/health";
+    public const string CFG_PATH_ERRORS = "/error";
+    public const string CFG_CONTENT_TYPE_JSON = "application/json;";
+    public const string CFG_CONTENT_MULTPART_FORM_DATA = "multipart/form-data;";
+    public const string CFG_BEARER_TAG = "Bearer ";
+    public const string CFG_BASIC_TAG = "Basic ";
+    public const string CFG_AUTHORIZATION_TAG = "Authorization";
+    public const string CFG_SWAGGER_END_POINT = "/swagger/v{0}/swagger.json";
+    public const string CFG_ALPHA_COLLECTION = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+    public const string CFG_ALPHA_COLLECTION_V2 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#";
+    public const string CFG_DOMAIN_EVENT_LAB = "DomainEvents";
+    public const string CFG_ATTRIBUTE_EMPTY_LABEL = "emptyRequest";
+    public const string CFG_TRACE_ID_HEADER = "X-Trace-Id";
+    public const string CFG_FILE_LOG_INTERNAL_SERILOG = "logs/logs_internal.txt";
+    public const string CFG_FILE_LOG_EXTERNAL_SERILOG = "logs/logs_external.txt";
+    public const string CFG_TRACE_ID_LABEL_SERILOG = "traceId";
+    public const string CFG_HTTP_METHOD_LABEL_SERILOG = "HttpMethod";
+    public const string CFG_HTTP_REQUEST_PATH_LABEL_SERILOG = "RequestPath";
+    public const string CFG_IP_USER_LABEL_SERILOG = "IpUser";
+    public const string CFG_OUTPUT_TEMPLATE_CONSOLE_SERILOG = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} | {traceId} | {Level:u3} | {IpUser} | {Message:lj}{NewLine}";
+    public const string CFG_OUTPUT_TEMPLATE_FILE_SERILOG = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} | {traceId} | {Level:u3} | {IpUser} | {Message:lj} {Exception}{NewLine}";
+    public const string CFG_LOG_START_MESSAGE_SERILOG = "Starting request in: ({Method}) -> {Path}";
+    public const string CFG_LOG_FINISHED_OK_SERILOG = "Finished OK in: ({Method}) -> {Path} | StatusCode: {StatusCode} | Elapsed: {Elapsed}ms";
+    public const string CFG_LOG_FINISHED_WARNING_SERILOG = "High response time of the request detected in: ({Method}) -> {Path} | Status: {StatusCode} | Elpased: {Elapsed} ms.";
+    public const string CFG_LOG_FINISHED_ERROR_SERILOG = "Error handled detected in: ({Method}) -> {Path} | Status: {StatusCode} | Elpased: {Elapsed} ms | Details of the detected error: {Message}";
+    public const string CFG_TRACE_ID_EMPTY_LABEL = "emptyTraceId";
+    public const string CFG_X_PAGINATION_TOTAL_COUNT = "X-Pagination-TotalCount";
+    public const string CFG_X_PAGINATION_PAGE_SIZE = "X-Pagination-PageSize";
+    public const string CFG_X_PAGINATION_CURRENT_PAGE = "X-Pagination-CurrentPage";
+    public const string CFG_X_PAGINATION_TOTAL_PAGES = "X-Pagination-TotalPages";
+    public const string CFG_MAIN_AUTHENTICATION_SCHEME_NAME = "AppWebHook";
+    public const string CFG_PREFIX_MULTIPART = "multipart/";
+    public const string CFG_PREFIX_FORM_DATA = "form-data";
+}

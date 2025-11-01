@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Hogar.Core.Shared.Exceptions;
+using Utilities.Core.Shared.Exceptions;
 
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
-using HttpStatusCodeConstantsCore = Hogar.Core.Shared.Constants.HttpStatusCodeConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
+using HttpStatusCodeConstantsCore = Utilities.Core.Shared.Constants.HttpStatusCodeConstants;
 
-namespace Hogar.Core.Shared.Dictionary
+namespace Utilities.Core.Shared.Dictionary
 {
     public static class ExceptionDictionary
     {

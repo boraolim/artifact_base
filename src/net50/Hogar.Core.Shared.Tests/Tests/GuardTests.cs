@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 using Xunit;
 
-using Hogar.Core.Shared.Extensions;
+using Utilities.Core.Shared.Extensions;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class GuardTests
     {

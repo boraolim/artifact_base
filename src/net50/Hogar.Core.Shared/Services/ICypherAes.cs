@@ -1,4 +1,4 @@
-﻿namespace Hogar.Core.Shared.Services
+﻿namespace Utilities.Core.Shared.Services
 {
     public interface ICypherAes
     {

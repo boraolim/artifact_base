@@ -1,4 +1,4 @@
-﻿namespace Hogar.Core.Shared.Constants
+﻿namespace Utilities.Core.Shared.Constants
 {
     public static class EnvironmentConstants
     {

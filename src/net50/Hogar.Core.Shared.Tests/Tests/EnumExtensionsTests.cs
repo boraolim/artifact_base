@@ -3,10 +3,10 @@ using System.ComponentModel;
 
 using Xunit;
 
-using Hogar.Core.Shared.Extensions;
-using Hogar.Core.Shared.Tests.Enums;
+using Utilities.Core.Shared.Extensions;
+using Utilities.Core.Shared.Tests.Enums;
 
-namespace Hogar.Core.Shared.Tests
+namespace Utilities.Core.Shared.Tests
 {
     public class EnumExtensionsTests
     {

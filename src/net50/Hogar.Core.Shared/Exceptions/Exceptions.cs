@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 using FluentValidation.Results;
 
-using Hogar.Core.Shared.Extensions;
+using Utilities.Core.Shared.Extensions;
 
-using MessageConstantsCore = Hogar.Core.Shared.Constants.MessageConstants;
+using MessageConstantsCore = Utilities.Core.Shared.Constants.MessageConstants;
 
-namespace Hogar.Core.Shared.Exceptions
+namespace Utilities.Core.Shared.Exceptions
 {
     public class CustomException : Exception
     {
