@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.Extensions.Logging;
-
-namespace Hogar.Core.Shared.Helpers;
+﻿namespace Hogar.Core.Shared.Helpers;
 
 public static class HttpClientFactoryHelper
 {
@@ -40,16 +37,20 @@ public static class HttpClientFactoryHelper
                                                             ILogger logger,
                                                             HttpMethod method,
                                                             string url,
-                                                            object? body = null,
+                                                            TimeSpan? timeout = default,
                                                             Dictionary<string, string>? headers = null,
-                                                            IEnumerable<(string Name, Stream Content, string FileName)>? files = null,
+                                                            object? body = default,
+                                                            IEnumerable<(string Name, Stream Content, string FileName)>? files = default,
                                                             CancellationToken cancellationToken = default,
+                                                            bool logBodies = true,
                                                             int maxLogRequestLength = 1024,
-                                                            int maxLogResponseLength = 1024,
-                                                            bool logBodies = true)// 🔹 Habilita/deshabilita logging de cuerpos
+                                                            int maxLogResponseLength = 1024)
     {
         using var client = CreateHttpClient(env);
         using var request = new HttpRequestMessage(method, url);
+
+        if(timeout.HasValue)
+            client.Timeout = timeout.Value;
 
         if(!headers.CheckIsNull())
         {
@@ -74,7 +75,7 @@ public static class HttpClientFactoryHelper
             {
                 var json = JsonSerializer.Serialize(body);
                 form.Add(new StringContent(json, Encoding.UTF8, "application/json"), "data");
-                if(logBodies) requestBodyLog = Truncate(json, maxLogRequestLength);
+                if(logBodies) requestBodyLog = Functions.TruncateText(json, maxLogRequestLength);
             }
 
             request.Content = form;
@@ -83,7 +84,7 @@ public static class HttpClientFactoryHelper
         {
             var json = JsonSerializer.Serialize(body);
             request.Content = new StringContent(json, Encoding.UTF8, "application/json");
-            if(logBodies) requestBodyLog = Truncate(json, maxLogRequestLength);
+            if(logBodies) requestBodyLog = Functions.TruncateText(json, maxLogRequestLength);
         }
 
         var stopwatch = Stopwatch.StartNew();
@@ -102,7 +103,7 @@ public static class HttpClientFactoryHelper
             if(logBodies && response.Content != null)
             {
                 var content = await response.Content.ReadAsStringAsync(cancellationToken);
-                responseBodyLog = Truncate(content, maxLogResponseLength);
+                responseBodyLog = Functions.TruncateText(content, maxLogRequestLength);
             }
 
             if(logBodies)
@@ -148,11 +149,5 @@ public static class HttpClientFactoryHelper
             logger.LogError(ex, "🔥 Error inesperado ({Method} {Url}) después de {Elapsed} ms: {Message}", method, url, stopwatch.ElapsedMilliseconds, ex.Message);
             throw;
         }
-    }
-
-    private static string Truncate(string text, int maxLength)
-    {
-        if(string.IsNullOrEmpty(text)) return text!;
-        return text.Length <= maxLength ? text : text.Substring(0, maxLength) + "...(truncated)";
     }
 }

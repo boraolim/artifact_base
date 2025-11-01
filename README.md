@@ -1,4 +1,15 @@
-# MyLibrary
+# Artifact Base --> Common Library
+
+Primera compilación;
+
+```Bash
+$ dotnet tool install --global dotnet-reportgenerator-globaltool
+$ dotnet clean && dotnet restore --force && dotnet build
+$ dotnet test Hogar.Core.Shared.Tests/Hogar.Core.Shared.Tests.csproj --collect:"XPlat Code Coverage" --results-directory "TestResults"
+$ reportgenerator "-reports:TestResults/**/coverage.cobertura.xml" "-targetdir:TestResults/reports" -reporttyoes:Html
+```
+
+Compilación general:
 
 ```Bash
 $ dotnet clean && dotnet build

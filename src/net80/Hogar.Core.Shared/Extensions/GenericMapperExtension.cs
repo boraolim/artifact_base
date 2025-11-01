@@ -1,17 +1,19 @@
-﻿namespace Hogar.Core.Shared.Extensions;
+﻿using Hogar.Core.Shared.Attributes;
+
+namespace Hogar.Core.Shared.Extensions;
 
 public static class GenericMapperExtensions
 {
     private static readonly object _lock = new();
     private static readonly Dictionary<(Type, Type), Delegate> _cache = new();
-    
+
     public static TTarget MapTo<TTarget>(this object source) where TTarget : class
     {
         if(source.CheckIsNull())
             throw new ArgumentNullException(nameof(source));
 
         var key = (source.GetType(), typeof(TTarget));
-        
+
         if(!_cache.TryGetValue(key, out var cachedMapper))
         {
             lock(_lock)
@@ -63,13 +65,21 @@ public static class GenericMapperExtensions
     private static List<MemberBinding> CreateMemberBindings<TTarget>(Type sourceType, Expression sourceTyped)
     {
         var bindings = new List<MemberBinding>();
-        
+
         foreach(var targetMember in typeof(TTarget).GetMembers(BindingFlags.Public | BindingFlags.Instance))
         {
             if((targetMember is PropertyInfo param && param.CanWrite) || targetMember is FieldInfo)
             {
+                // 1. Ignorar si tiene [IgnoreMap]
+                if(targetMember.GetCustomAttribute<IgnoreMapAttribute>() != null)
+                    continue;
+
+                // 2. Revisar si hay [MapTo] para buscar el origen con otro nombre.
+                var mapToAtrr = targetMember.GetCustomAttribute<MapToAttribute>();
+                var sourceName = mapToAtrr?.TargetProperty ?? targetMember.Name;
+
                 var sourceValue = GetSourceMemberExpression(sourceType, sourceTyped, targetMember.Name, GetMemberType(targetMember));
-                
+
                 if(!sourceValue.CheckIsNull())
                     bindings.Add(Expression.Bind(targetMember, sourceValue));
             }
@@ -121,11 +131,11 @@ public static class GenericMapperExtensions
         if(targetItemType.IsAssignableFrom(sourceItemType)) return source;
 
         var selectMethod = GetGenericMethod(typeof(Enumerable), "Select", 2, sourceItemType, targetItemType);
-        var toListMethod = GetGenericMethod(typeof(Enumerable), "ToList", 1, targetItemType);            
+        var toListMethod = GetGenericMethod(typeof(Enumerable), "ToList", 1, targetItemType);
         var param = Expression.Parameter(sourceItemType, "x");
         var itemConversion = ConvertExpression(param, targetItemType);
         var selectExpr = Expression.Call(selectMethod, source, Expression.Lambda(itemConversion, param));
-        
+
         return Expression.Call(toListMethod, selectExpr);
     }
 
@@ -152,9 +162,9 @@ public static class GenericMapperExtensions
 
         // método ToDictionary<TSource, TKey, TElement>
         var toDictionaryMethod = typeof(Enumerable).GetMethods()
-            .First(methodObj => methodObj.Name == "ToDictionary" && 
-                        methodObj.IsGenericMethodDefinition && 
-                        methodObj.GetGenericArguments().Length == 3 && 
+            .First(methodObj => methodObj.Name == "ToDictionary" &&
+                        methodObj.IsGenericMethodDefinition &&
+                        methodObj.GetGenericArguments().Length == 3 &&
                         methodObj.GetParameters().Length == 3)
             .MakeGenericMethod(sourceKvpType, targetKeyType, targetValueType);
 

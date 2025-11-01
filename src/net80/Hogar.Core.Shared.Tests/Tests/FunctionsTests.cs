@@ -1,4 +1,6 @@
-﻿namespace Hogar.Core.Shared.Tests;
+﻿using Shouldly;
+
+namespace Hogar.Core.Shared.Tests;
 
 public class FunctionsTests
 {
@@ -731,6 +733,31 @@ public class FunctionsTests
         Assert.IsType<InvalidOperationException>(exception.InnerException);
     }
 
+    [Theory]
+    [InlineData("Hola", 10, "Hola")]                    // texto corto
+    [InlineData("12345", 5, "12345")]                   // texto igual al máximo
+    [InlineData("ABCDEFGHIJ", 5, "ABCDE...(truncated)")]// texto más largo
+    [InlineData("", 5, "")]                             // texto vacío
+    [InlineData(null, 5, null)]                         // texto nulo
+    [InlineData("Hola", 100, "Hola")]                   // maxLength mayor al texto
+    public void TruncateText_Should_Return_Expected_Value(string text, int maxLength, string expected)
+    {
+        // Act
+        var result = Functions.TruncateText(text, maxLength);
+
+        // Assert
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
+    [InlineData("Texto", -1)]
+    [InlineData("Prueba", -10)]
+    public void TruncateText_Should_Throw_When_MaxLength_Is_Negative(string text, int maxLength)
+    {
+        // Act & Assert
+        var exception = Assert.Throws<ArgumentOutOfRangeException>(() => Functions.TruncateText(text, maxLength));
+        Assert.Contains("maxLength", exception.Message);
+    }
     private static bool InvokeTryParseInteger(string input, out object? result)
     {
         // Usar reflexión porque el método es privado
